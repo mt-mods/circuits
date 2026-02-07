@@ -32,7 +32,7 @@ local wire = {
 	sunlight_propagates = true,
 	is_ground_content = false,
 	walkable = true,
-	groups = {dig_immediate=3,circuit_wire=1,circuit_raw_wire=1},
+	groups = {oddly_breakable_by_hand=1,circuit_wire=1,circuit_raw_wire=1},
 	stack_max = c.stack_max(),
 	connects_to = {"group:circuit_wire", "group:circuit_consumer", "group:circuit_power"},
 	--	Circuits properties definition area
@@ -49,7 +49,12 @@ local wire = {
 c.register_on_off(c.mod()..":wire",wire,{},
 {
 	tiles = {"circuits_wire.png^[colorize:#111:160"},
-	groups = {dig_immediate=3,circuit_wire=1,circuit_raw_wire=1,not_in_creative_inventory=1}
+	groups = {
+		oddly_breakable_by_hand=1,
+		circuit_wire=1,
+		circuit_raw_wire=1,
+		not_in_creative_inventory=1
+	}
 })
 
 if c.is_mod_enabled("default") then
@@ -73,14 +78,19 @@ for _, colour in ipairs{"red", "green", "blue"} do
 	local def = table.copy(wire)
 	local col_string = colours[colour]
 	def.tiles[1] = def.tiles[1] .. col_string
-	def.groups = {choppy=1,["circuit_wire_"..colour]=1,circuit_wire=1}
+	def.groups = {oddly_breakable_by_hand=1,["circuit_wire_"..colour]=1,circuit_wire=1}
 	def.connects_to = {"group:circuit_raw_wire", "group:circuit_wire_" .. colour
 	  , "group:circuit_consumer", "group:circuit_power"}
 	def.circuits.connects_to = {"circuit_raw_wire", "circuit_wire_" .. colour
 	  , "circuit_consumer", "circuit_power"}
 	c.register_on_off(c.mod()..":wire_" .. colour,def,
 	{
-		groups={dig_immediate=3,circuit_wire=1,circuit_raw_wire=1,not_in_creative_inventory=1}
+		groups={
+			oddly_breakable_by_hand=1,
+			circuit_wire=1,
+			circuit_raw_wire=1,
+			not_in_creative_inventory=1
+		}
 	},
 	{
 		tiles = {"circuits_wire.png" .. col_string .. "^[colorize:#111:160"}

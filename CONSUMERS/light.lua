@@ -15,10 +15,10 @@ local light = {
 	light_source = 14,
 	is_ground_content = false,
 	walkable = true,
-	groups = {choppy=1,circuit_light = 1,circuit_consumer=1},
+	groups = {oddly_breakable_by_hand=2,circuit_light = 1,circuit_consumer=1},
 	connects_to = {"group:circuit_wire","group:circuit_power"},
 	circuits = {
-		connects = c.local_area,
+		connects = {x = {2, -2}, y = {2, -2}, z = {2, -2}},
 		connects_to = {"circuit_wire", "circuit_power"},
 		store_connect = "meta",
 		on_update = function(npos)
@@ -47,7 +47,7 @@ local light = {
 
 c.register_on_off(c.mod()..":light",light,
 {
-	groups = {choppy=1,circuit_consumer=1,not_in_creative_inventory=1}
+	groups = {oddly_breakable_by_hand=2,circuit_consumer=1,not_in_creative_inventory=1}
 },
 {
 	tiles = {"circuits_light_off.png"},
