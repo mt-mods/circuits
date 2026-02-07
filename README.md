@@ -1,6 +1,6 @@
 # Circuits
-A modpack for the voxel game engine luanti, originally made by qwertymine3 [GitHub](https://github.com/Qwertymine) [forums](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=16371)  
-Currently manantained/developed by Sheriff_U3 [GitHub](https://github.com/Sheriff-Unit-3) [forums](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=53881) [ContentDB](https://content.luanti.org/users/Sheriff-Unit-3/)  
+A modpack for the voxel game engine luanti, originally made by qwertymine3, [GitHub](https://github.com/Qwertymine), [forums](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=16371).  
+Currently manantained/developed by Sheriff_U3, [GitHub](https://github.com/Sheriff-Unit-3), [forums](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=53881), [ContentDB](https://content.luanti.org/users/Sheriff-Unit-3/).  
 
 ## Features
 Power sources:  
@@ -39,6 +39,6 @@ Support for the Mineclone games is not planned, Mineclone just isn't built for t
 
 ## Licensing
 This mod is licensed under [MIT](https://opensource.org/license/mit) by Sheriff_U3,
-license text can be found in the LICENSE file.
-All media files are licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt)  
+license text can be found in the LICENSE file.  
+All media files are licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt) by Sheriff_U3.  
 The original MIT license by qwertymine3 can be found in the `old license` file.
