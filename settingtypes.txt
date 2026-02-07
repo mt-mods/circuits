@@ -1,14 +1,15 @@
-[Networking]
+[Networking Settings]
 
 #  Sets the max number of nodes in a network
 circuits_network_size (Network Size) int 50 10 1000
 
-[Buttons]
+[Power Settings]
+
+#  Sets the range of player and entity detectors
+circuits_detector_range (Detector Range) int 5 5 50
 
 #  Sets how long a button will stay on for
 circuits_button_on_timer (Button Press Time) int 1 1 60
-
-[Levers]
 
 #  Whether levers can turn off like buttons or not
 circuits_lever_auto_off (Auto Turn Off Levers) bool false
@@ -16,7 +17,7 @@ circuits_lever_auto_off (Auto Turn Off Levers) bool false
 # Requires: circuits_lever_auto_off
 circuits_lever_on_timer (Lever On Time) int 5 1 360
 
-[Wrench]
+[Item Settings]
 
 #  Enables the wrench, it's similar to MTG's screwdriver
 circuits_wrench_enabled (Wrench) bool false

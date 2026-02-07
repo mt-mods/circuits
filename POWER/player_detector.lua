@@ -10,6 +10,8 @@ local function power_off(npos)
 	core.swap_node(npos,npos.node)
 end
 
+local range = tonumber(core.settings:get("circuits_detector_range")) or 5
+
 local detector = {
   description = "Player Detector",
   tiles = {"circuits_player_detector_on.png"},
@@ -22,7 +24,7 @@ local detector = {
   end,
   on_timer = function(pos,_)
     local npos = c.npos(pos)
-    local entity = core.get_objects_inside_radius(npos,6.0)
+    local entity = core.get_objects_inside_radius(npos,range+1)
     local players = 0
     if #entity >= 1 then
       for k,obj in pairs(entity) do
