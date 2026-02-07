@@ -24,19 +24,26 @@ they will not be able to connect (or disconnect) from any other node.
 So that you don't have to hunt through the rest of this document for the documentation 
 on the above mentioned api's, we've added their documentation here for you.
 
-### add_circuit_def
-WARNING: This is an experimental function and should only be used for testing.
+## Circuits Definition
+This is required in any node that will interact with nodes in this mod. 
+Note that there are no defaults for these options, they were filled instead with the most common values. 
+Fields are required unless otherwise stated.   
 ```lua
---- Should be placed in circuits = in the node definition table.
--- @param connect string values are "area", or "behind".
--- (Area will connect to any node next to it. Behind will connect through one node.)
--- @param connects table Of groups (without group:) that the node will connnect to in the network.
--- @param storage string Tells what storing method to use, options are meta, param1, and param2
--- Don't use meta if this node will be using metadata as well.
--- Param1 and 2 can only be used if they are not used by the engine.
--- @param on_update function Params are npos and args.
--- This is called when other nodes in the network update the status, like when they turn it on.
-function circuits.add_circuit_def(connect, connects, storage, on_update)
+circuits = {
+  connects = circuits.local_area
+  -- Options are circuits.local_area and circuits.behind.
+  connects_to = {"circuit_consumer", "circuit_wire", "circuit_power"},
+  -- Table of types of nodes this one connects to.
+  store_connect = "meta",
+  -- Options are "meta", "param1", "param2", you must use one that will not be used else where.
+  on_update = function(npos, args)
+    -- Code to execute when power states are updated.
+  end
+  powering = function(npos, rpos)
+    return circuits.is_on(npos)
+  end
+  -- Only required by nodes that will provide power.
+}
 ```
 
 ### on_construct
@@ -51,6 +58,20 @@ circuits.on_construct(pos)
 --- Disconnects all nodes attached to that pos
 -- @param pos table
 circuits.on_destruct(pos)
+```
+### add_circuit_def
+WARNING: This is an experimental function and should only be used for testing.
+```lua
+--- Should be placed in circuits = in the node definition table.
+-- @param connect string values are "area", or "behind".
+-- (Area will connect to any node next to it. Behind will connect through one node.)
+-- @param connects table Of groups (without group:) that the node will connnect to in the network.
+-- @param storage string Tells what storing method to use, options are meta, param1, and param2
+-- Don't use meta if this node will be using metadata as well.
+-- Param1 and 2 can only be used if they are not used by the engine.
+-- @param on_update function Params are npos and args.
+-- This is called when other nodes in the network update the status, like when they turn it on.
+function circuits.add_circuit_def(connect, connects, storage, on_update)
 ```
 
 # Util Functions
