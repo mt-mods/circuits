@@ -15,7 +15,7 @@ local pressure_plate = {
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
-		fixed = {{-0.4,-0.5,-0.4,0.4,-0.4,0.4},{-0.2,-0.5,-0.2,0.2,-1.8,0.2}}
+		fixed = {{-0.4,-0.5,-0.4,0.4,-0.4,0.4}}
 	},
 	selection_box = {
 		type = "wallmounted",

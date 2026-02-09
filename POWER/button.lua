@@ -17,7 +17,7 @@ local button = {
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
-		fixed = {{-0.15,-0.501,-0.15,0.15,-0.35,0.15},{-0.2,-0.501,-0.2,0.2,-1.8,0.2}}
+		fixed = {{-0.15,-0.501,-0.15,0.15,-0.35,0.15}}
 	},
 	selection_box = {
 		type = "wallmounted",
