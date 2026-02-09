@@ -46,10 +46,12 @@ local wire = {
 	},
 }
 
-c.register_on_off(c.mod()..":wire",wire,{},
+c.register_on_off(c.mod()..":wire",wire,
+{
+	groups = {dig_immediate=2,circuit_wire=1,circuit_raw_wire=1,not_in_creative_inventory=1}
+},
 {
 	tiles = {"circuits_wire.png^[colorize:#111:160"},
-	groups = {dig_immediate=2,circuit_wire=1,circuit_raw_wire=1,not_in_creative_inventory=1}
 })
 
 if c.is_mod_enabled("default") then

@@ -1,7 +1,7 @@
 circuits = {}
 circuits.info = {
 	name = "circuits",
-	version = "v1.0.0"
+	version = "v1.1.0-dev"
 }
 circuits.hash_pos = core.hash_node_position
 circuits.unhash_pos = core.get_position_from_hash

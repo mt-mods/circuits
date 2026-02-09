@@ -20,7 +20,6 @@ local function insert_update(update, type)
 
 	update_list[type] = update_list[type] or {}
 	update_list[type][#update_list[type]+1] = update
-	return
 end
 
 local function cons_or_wire(name)
@@ -112,7 +111,7 @@ core.register_globalstep(function(dtime)
 	local replace = 1
 	-- Handle items in the wait queue
 	for i=1,#c.pending.wait do
-		update = c.pending.wait[i]
+		local update = c.pending.wait[i]
 
 		update.delay = update.delay - 1
 		if update.delay <= 0 then

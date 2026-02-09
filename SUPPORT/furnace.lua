@@ -1,8 +1,8 @@
 local c = circuits
 
 if c.is_mod_enabled("default") then
-  local furnace_on = "default:furnace"
-  local furnace_off = "default:furnace_active"
+  local furnace_on = "default:furnace_active"
+  local furnace_off = "default:furnace"
   local furnaces = {
     on = core.registered_nodes[furnace_on],
     off = core.registered_nodes[furnace_off]
@@ -20,20 +20,16 @@ if c.is_mod_enabled("default") then
 		end,
 		powering = function(npos, rpos)
 			return c.is_on(npos)
-		end
+		end,
+    powered = furnace_on,
+	  off = furnace_off
 	}
 
   for state, furnace in pairs(furnaces) do
-    local function furnace_destruct(pos)
-      return furnace.on_destruct
-    end
-    local function furnace_timer(pos, elapsed, node, timeout)
-      return furnace.on_timer
-    end
-    local function furnace_construct(pos)
-      return furnace.on_construct
-    end
-    furnace.groups.circuit_power = 1
+    local on_destruct = table.copy(furnace.on_destruct)
+    local on_timer = table.copy(furnace.on_timer)
+    local on_construct = table.copy(furnace.on_construct)
+    furnace.groups.circuit_power = 1 
 
     local name = ""
     if state == "on" then
@@ -43,23 +39,32 @@ if c.is_mod_enabled("default") then
     end
     core.override_item(name, {
       groups = furnace.groups,
+      connects_to = {"group:circuit_consumer", "group:circuit_wire"},
       circuits = circuits_def,
       on_construct = function(pos)
-        furnace_construct(pos)
         circuits.on_construct(pos)
+        if on_construct then
+          return on_construct(pos)
+        end
       end,
       on_timer = function(pos, elapsed, node, timeout)
-        furnace_timer(pos, elapsed, node, timeout)
+        local timer_return
+        if on_timer then
+          timer_return = on_timer(pos, elapsed, node, timeout)
+        end
         local npos = c.npos(pos)
 		    if c.is_on(npos) then
-  	    	c.power_update(npos,"on")
+  	    	c.wait(npos,"on",1)
         elseif not c.is_on(npos) then
-  	    	c.power_update(npos,"off")
+  	    	c.wait(npos,"off",1)
 	      end
+        return timer_return
       end,
       on_destruct = function(pos)
-        furnace_destruct(pos)
         circuits.on_destruct(pos)
+        if on_destruct then
+          return on_destruct(pos)
+        end
       end
     })
   end
