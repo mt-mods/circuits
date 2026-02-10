@@ -41,4 +41,4 @@ Support for the Mineclone games is not planned, Mineclone just isn't built for t
 This mod is licensed under [MIT](https://opensource.org/license/mit) by Sheriff_U3,
 license text can be found in the LICENSE file.  
 All media files are licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt) by Sheriff_U3.  
-The original MIT license by qwertymine3 can be found in the `old license` file.
+The original MIT license by qwertymine3 can be found in the `LICENSE` file.
