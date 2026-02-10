@@ -50,7 +50,8 @@ local function map_connect_mod(node, dir, mod)
 		node.node.param2 = mod(node.node.param2, dir)
 
 	elseif cd.store_connect == "meta" then
-		local meta = core.get_meta(node)
+		local pos = {x = node.x, y = node.y, z = node.z}
+		local meta = core.get_meta(pos)
 		meta:set_int("connect",mod(meta:get_int("connect"), dir))
 	end
 end
@@ -118,8 +119,7 @@ end
 local function set_connections(npos)
 	local cd = c.get_circuit_def(npos.node.name)
 	
-	if cd.store_connect == "param1"
-	or cd.store_connect == "param2" then
+	if cd.store_connect == "param1" or cd.store_connect == "param2" then
 		core.swap_node(npos, npos.node)
 
 	elseif cd.store_connect == "meta" then
@@ -189,16 +189,16 @@ local function connect_all(node)
 	local node_cd = c.get_circuit_def(node.node.name)
 	for axis, _ in pairs(node_cd.connects) do
 		for dir=1,-1,-2 do
-		for dist=1,max_dist do
-			local pos = {x=0, y=0, z=0}; pos[axis] = dir * dist
-			local to = c.rot_relative_real_pos(node,pos)
-			to.node = core.get_node(to)
-
-			-- Only one connection per side
-			if c.connect(node,to) then
-				break
+			for dist=1,max_dist do
+				local pos = {x=0, y=0, z=0}; pos[axis] = dir * dist
+				local to = c.rot_relative_real_pos(node,pos)
+				to.node = core.get_node(to)
+	
+				-- Only one connection per side
+				if c.connect(node,to) then
+					break
+				end
 			end
-		end
 		end
 	end
 	c.update(node)
@@ -229,7 +229,8 @@ local function get_bit_flags(node)
 		return node.node.param2
 
 	elseif cd.store_connect == "meta" then
-		local meta = core.get_meta(node)
+		local pos = {x = node.x, y = node.y, z = node.z}
+		local meta = core.get_meta(pos)
 		return meta:get_int("connect")
 	end
 end

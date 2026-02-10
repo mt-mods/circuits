@@ -35,7 +35,7 @@ circuits = {
   connects_to = {"circuit_consumer", "circuit_wire", "circuit_power"},
   -- Table of types of nodes this one connects to.
   store_connect = "meta",
-  -- Options are "meta", "param1", "param2", you must use one that will not be used else where.
+  -- Options are "meta", "param1", "param2", you must not use param1 or 2 if it will be used else where.
   on_update = function(npos, args)
     -- Code to execute when power states are updated.
   end
@@ -67,7 +67,6 @@ WARNING: This is an experimental function and should only be used for testing.
 -- (Area will connect to any node next to it. Behind will connect through one node.)
 -- @param connects table Of groups (without group:) that the node will connnect to in the network.
 -- @param storage string Tells what storing method to use, options are meta, param1, and param2
--- Don't use meta if this node will be using metadata as well.
 -- Param1 and 2 can only be used if they are not used by the engine.
 -- @param on_update function Params are npos and args.
 -- This is called when other nodes in the network update the status, like when they turn it on.
