@@ -131,6 +131,8 @@ end
 -- a - npos of a node
 -- b - npos of other node
 local function connect(a,b)
+	a.node = core.get_node(a)
+	b.node = core.get_node(b)
 	local a_cd = c.get_circuit_def(a.node.name)
 	local b_cd = c.get_circuit_def(b.node.name)
 

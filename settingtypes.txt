@@ -17,6 +17,9 @@ circuits_lever_auto_off (Auto Turn Off Levers) bool false
 # Requires: circuits_lever_auto_off
 circuits_lever_on_timer (Lever On Time) int 5 1 360
 
+# How far laser detectors can connect
+circuits_laser_connect_range (Laser Connect Range) int 10 3 100
+
 [Item Settings]
 
 #  Enables the wrench, it's similar to MTG's screwdriver
