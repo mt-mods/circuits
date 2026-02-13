@@ -8,9 +8,13 @@ jobs:
     runs-on: codeberg-tiny
 
     steps:
-    - name: apt
-      run: sudo apt-get install -y luarocks
-    - name: luacheck install
-      run: luarocks install --local luacheck
-    - name: luacheck run
-      run: $HOME/.luarocks/bin/luacheck ./ --only 0 --globals core minetest vector bit circuits doors default
+      - uses: actions/checkout@v4
+      - uses: leafo/gh-actions-lua@v12
+        with:
+          luaVersion: "5.1"
+      - uses: leafo/gh-actions-luarocks@v6
+      - name: Install luacheck
+        run: |
+          luarocks install luacheck
+      - name: luacheck run
+        run: $HOME/.luarocks/bin/luacheck ./ --only 0 --globals core minetest vector bit circuits doors default
