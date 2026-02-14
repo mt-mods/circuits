@@ -1,3 +1,4 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local function power_on(npos)
@@ -11,7 +12,7 @@ local function power_off(npos)
 end
 
 local inverter = {
-	description = "Inverter",
+	description = S("Inverter"),
 	drawtype = "normal",
 	tiles = {"circuits_inverter.png"},
 	paramtype2 = "facedir",

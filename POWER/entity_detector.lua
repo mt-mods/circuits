@@ -1,3 +1,4 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local function power_on(npos)
@@ -13,7 +14,7 @@ end
 local range = tonumber(core.settings:get("circuits_detector_range")) or 5
 
 local detector = {
-  description = "Entity Detector",
+  description = S("Entity Detector"),
   tiles = {"circuits_entity_detector_on.png"},
   paramtype = "light",
   is_ground_content = false,

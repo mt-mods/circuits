@@ -1,3 +1,4 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local range = tonumber(core.settings:get("circuits_laser_connect_range")) or 10
@@ -38,7 +39,7 @@ local function ray_points(pos, pos2)
 end
 
 local detector = {
-  description = "Laser Detector",
+  description = S("Laser Detector"),
   tiles = {"circuits_laser_detector.png"},
   paramtype = "light",
   is_ground_content = false,

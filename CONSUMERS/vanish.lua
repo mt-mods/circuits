@@ -1,7 +1,8 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local vanish = {
-  description = "Vanishing Node",
+  description = S("Vanishing Node"),
   drawtype = "normal",
   tiles = {"blank.png"},
   use_texture_alpha = "clip",

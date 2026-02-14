@@ -1,3 +1,4 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local function power_on(npos)
@@ -13,7 +14,7 @@ end
 local on_time = tonumber(core.settings:get("circuits_button_on_timer")) or 1
 
 local button = {
-	description = "Button",
+	description = S("Button"),
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",

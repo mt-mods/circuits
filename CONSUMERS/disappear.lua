@@ -1,7 +1,8 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local disappear = {
-  description = "Disappearing Node",
+  description = S("Disappearing Node"),
   drawtype = "normal",
   tiles = {"circuits_disappear.png"},
   is_ground_content = false,

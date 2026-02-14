@@ -1,15 +1,16 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 -- for use in crafting recipes
 core.register_craftitem(c.mod()..":circuit_board",{
-  description = "Circuit Board",
+  description = S("Circuit Board"),
   inventory_image = "circuits_circuit_board.png",
   groups = {circuit_board = 1, craft_item = 1}
 })
 core.register_alias("circuit_board", c.mod()..":circuit_board")
 
 core.register_craftitem(c.mod()..":light_bulb",{
-  description = "Lightbulb",
+  description = S("Lightbulb"),
   inventory_image = "circuits_light_bulb.png",
   groups = {light_bulb = 1, craft_item = 1}
 })

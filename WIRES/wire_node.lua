@@ -1,7 +1,8 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local wire = {
-	description = "Wire",
+	description = S("Wire"),
 	drawtype = "nodebox",
 	node_box = {
 		type = "connected",
@@ -65,22 +66,24 @@ if c.is_mod_enabled("default") then
 	})
 end
 
-local colours = {
+local colors = {
 	red = "^[colorize:#F00:160",
 	green = "^[colorize:#0F0:160",
 	blue = "^[colorize:#00F:160",
 }
 
-for _, colour in ipairs{"red", "green", "blue"} do
+for _, color in ipairs{"red", "green", "blue"} do
 	local def = table.copy(wire)
-	local col_string = colours[colour]
+	local col_string = colors[color]
+	local color_trans = color:gsub("^%l", string.upper)
+	def.description = S("@1 Wire", color_trans)
 	def.tiles[1] = def.tiles[1] .. col_string
-	def.groups = {dig_immediate=2,["circuit_wire_"..colour]=1,circuit_wire=1}
-	def.connects_to = {"group:circuit_raw_wire", "group:circuit_wire_" .. colour
+	def.groups = {dig_immediate=2,["circuit_wire_"..color]=1,circuit_wire=1}
+	def.connects_to = {"group:circuit_raw_wire", "group:circuit_wire_" .. color
 	  , "group:circuit_consumer", "group:circuit_power"}
-	def.circuits.connects_to = {"circuit_raw_wire", "circuit_wire_" .. colour
+	def.circuits.connects_to = {"circuit_raw_wire", "circuit_wire_" .. color
 	  , "circuit_consumer", "circuit_power"}
-	c.register_on_off(c.mod()..":wire_" .. colour,def,
+	c.register_on_off(c.mod()..":wire_" .. color,def,
 	{
 		groups={dig_immediate=2,circuit_wire=1,not_in_creative_inventory=1}
 	},
@@ -89,11 +92,11 @@ for _, colour in ipairs{"red", "green", "blue"} do
 	})
 	if c.is_mod_enabled("default") then
 		core.register_craft({
-			output = "wire_"..colour.." 9",
+			output = "wire_"..color.." 9",
 			recipe = {
-				{"default:papyrus", "dye:"..colour, "default:papyrus"},
+				{"default:papyrus", "dye:"..color, "default:papyrus"},
 				{"default:copper_ingot", "default:copper_ingot", "default:copper_ingot"},
-				{"default:papyrus", "dye:"..colour, "default:papyrus"}
+				{"default:papyrus", "dye:"..color, "default:papyrus"}
 			}
 		})
 	end

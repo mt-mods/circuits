@@ -1,3 +1,4 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local function power_on(npos)
@@ -12,7 +13,7 @@ end
 
 local solar_panel = {
   drawtype = "nodebox",
-  description = "Solar Panel",
+  description = S("Solar Panel"),
   tiles = {"circuits_solar_panel.png"},
   paramtype = "light",
 	paramtype2 = "wallmounted",

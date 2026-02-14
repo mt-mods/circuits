@@ -1,7 +1,8 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local light = {
-	description = "Light",
+	description = S("Light"),
 	drawtype = "nodebox",
 	node_box = {
 	  type = "fixed",
@@ -71,7 +72,7 @@ light.circuits.connects_to = {"circuit_consumer","circuit_wire","circuit_power"}
 
 c.register_on_off(c.mod()..":wired_light",light,
 	{
-		description = "Wired Light",
+		description = S("Wired Light"),
 		groups = {
 			choppy=1,
 			circuit_light=1,

@@ -1,3 +1,4 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local function is_facedir(npos)
@@ -22,7 +23,7 @@ local dir_to_facedir = {
 }
 
 core.register_craftitem(c.mod()..":wrench", {
-	description = "Wrench",
+	description = S("Wrench"),
 	inventory_image = "circuits_wrench.png",
 	on_use = function(itemstack, placer, pointed_thing)
 		-- Prevents shutdown of the game when pointed at nothing.

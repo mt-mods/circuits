@@ -1,7 +1,8 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local indicator = {
-	description = "Indicator",
+	description = S("Indicator"),
 	drawtype = "normal",
 	tiles = {"circuits_indicator_on.png"},
 	use_texture_alpha = "opaque",

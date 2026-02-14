@@ -1,3 +1,4 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local function power_on(npos)
@@ -14,7 +15,7 @@ local auto_off = core.settings:get("circuits_lever_auto_off") or false
 local on_time = tonumber(core.settings:get("circuits_lever_on_timer")) or 5
 
 local lever = {
-	description = "Lever",
+	description = S("Lever"),
 	drawtype = "mesh",
 	mesh = "circuits_lever_down.gltf",
 	selection_box = {

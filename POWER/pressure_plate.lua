@@ -1,3 +1,4 @@
+local S, PS = core.get_translator("circuits")
 local c = circuits
 
 local function power_on(npos)
@@ -11,7 +12,7 @@ local function power_off(npos)
 end
 
 local pressure_plate = {
-	description = "Pressure Plate",
+	description = S("Pressure Plate"),
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
