@@ -28,7 +28,8 @@ msgstr ""
 msgid "Adds circuit consumers."
 msgstr ""
 
-#: mod.conf:2 msgid "Adds circuits power nodes."
+#: mod.conf:2
+msgid "Adds circuits power nodes."
 msgstr ""
 
 #: mod.conf:2
