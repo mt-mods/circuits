@@ -73,7 +73,8 @@ if c.is_mod_enabled("default") then
 		output = "solar_panel",
 		recipe = {
       {"group:glass", "group:glass", "group:glass"},
-      {"default:steel_ingot", "circuit_board", "default:steel_ingot"}
+      {"default:steel_ingot", "circuit_board", "default:steel_ingot"},
+			{"", "copper_wire_spool", ""}
     }
 	})
 elseif c.is_mod_enabled("blk") then

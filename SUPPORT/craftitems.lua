@@ -16,7 +16,22 @@ core.register_craftitem(c.mod()..":light_bulb",{
 })
 core.register_alias("light_bulb", c.mod()..":light_bulb")
 
+core.register_craftitem(c.mod()..":spool",{
+  description = S("Spool"),
+  inventory_image = "circuits_spool.png",
+  groups = {spool = 1, craft_item = 1}
+})
+core.register_alias("spool", c.mod()..":spool")
+
+core.register_craftitem(c.mod()..":copper_wire_spool",{
+  description = S("Copper Wire Spool"),
+  inventory_image = "circuits_copper_spool.png",
+  groups = {copper_spool = 1, craft_item = 1}
+})
+core.register_alias("copper_wire_spool", c.mod()..":copper_wire_spool")
+
 -- crafts
+-- MTG Support
 if c.is_mod_enabled("default") then
   -- circuit board
   core.register_craft({
@@ -27,6 +42,7 @@ if c.is_mod_enabled("default") then
       {"default:steel_ingot", "default:copper_ingot", "default:steel_ingot"}
     }
   })
+
   -- lightbulb
   core.register_craft({
     output = "light_bulb 9",
@@ -36,6 +52,28 @@ if c.is_mod_enabled("default") then
       {"default:copper_ingot"}
     }
   })
+
+  -- spool
+  core.register_craft({
+    output = "spool 10",
+    recipe = {
+      {"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
+      {"", "default:steel_ingot", ""},
+      {"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"}
+    }
+  })
+
+  -- copper spool
+  core.register_craft({
+    output = "copper_wire_spool 6",
+    recipe = {
+      {"spool", "spool", "spool"},
+      {"default:copper_ingot", "default:copper_ingot", "default:copper_ingot"},
+      {"spool", "spool", "spool"}
+    }
+  })
+
+-- Blockd Support
 elseif c.is_mod_enabled("blk") then
   -- circuit board
   core.register_craft({

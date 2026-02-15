@@ -54,7 +54,7 @@ if c.is_mod_enabled("default") then
     recipe = {
       {"group:stone", "group:glass", "group:stone"},
       {"group:stone", "light_bulb", "group:stone"},
-			{"group:stone", "default:copper_ingot", "group:stone"}
+			{"group:stone", "copper_wire_spool", "group:stone"}
     }
   })
 end

@@ -93,7 +93,7 @@ circuits.register_on_off(c.mod()..":lever",lever,
 if c.is_mod_enabled("default") then
   core.register_craft({output="lever 4",recipe={
     {"group:wood"},
-    {"default:copper_ingot"}}
+    {"copper_wire_spool"}}
   })
 elseif c.is_mod_enabled("blk") then
 	core.register_craft({output="lever 4",recipe={

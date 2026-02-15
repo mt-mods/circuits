@@ -133,29 +133,14 @@ c.register_on_off(c.mod()..":laser_detector",detector,{},{
   groups = {choppy=1,laser=1,detector=1,circuit_power=1}
 })
 
---[[ crafts
-core.register_craft({
-  output = c.mod()..":laser_detector_off",
-  recipe = {{"holder"}}
-})
-
+--crafts
 if c.is_mod_enabled("default") then
   core.register_craft({
     output = c.mod()..":laser_detector_off",
     recipe = {
       {"default:steel_ingot", "dye:red", "default:steel_ingot"},
-      {"default:gold_ingot", "light_bulb", "default:copper_ingot"},
-      {"default:steel_ingot", "circuit_board", "default:steel_ingot"}
-    }
-  })
-elseif c.is_mod_enabled("blk") then
-	core.register_craft({
-    output=c.mod()..":laser_detector_off",
-    recipe={
-      {"iron_bar", "blk_dyes:red_dye", "iron_bar"},
-      {"gold_bar", "copper_bar", "gold_bar"},
-      {"iron_bar", "circuit_board", "iron_bar"}
+      {"copper_wire_spool", "light_bulb", "copper_wire_spool"},
+      {"group:stone", "circuit_board", "group:stone"}
     }
   })
 end
-]]

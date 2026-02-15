@@ -77,7 +77,7 @@ if c.is_mod_enabled("default") then
     output = c.mod()..":entity_detector_off",
     recipe = {
       {"default:steel_ingot", "dye:red", "default:steel_ingot"},
-      {"default:gold_ingot", "light_bulb", "default:copper_ingot"},
+      {"default:gold_ingot", "light_bulb", "copper_wire_spool"},
       {"default:steel_ingot", "circuit_board", "default:steel_ingot"}
     }
   })

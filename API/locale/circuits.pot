@@ -11,6 +11,34 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+
+#: modpack.conf:2
+msgid "Circuits"
+msgstr ""
+
+#: modpack.conf:3
+msgid "Circuits, a basic redstone-like mod."
+msgstr ""
+
+#: mod.conf:2
+msgid "Adds API for circuits."
+msgstr ""
+
+#: mod.conf:2
+msgid "Adds circuit consumers."
+msgstr ""
+
+#: mod.conf:2 msgid "Adds circuits power nodes."
+msgstr ""
+
+#: mod.conf:2
+msgid "Adds circuit support for other mods."
+msgstr ""
+
+#: mod.conf:2
+msgid "Adds wire nodes for circuits."
+msgstr ""
+
 #: wrench.lua:26
 msgid "Wrench"
 msgstr ""
@@ -71,10 +99,30 @@ msgstr ""
 msgid "Lightbulb"
 msgstr ""
 
+#: craftitems.lua:20
+msgid "Spool"
+msgstr ""
+
+#: craftitems.lua:26
+msgid "Copper Wire Spool"
+msgstr ""
+
 #: wire_node.lua:5
 msgid "Wire"
 msgstr ""
 
 #: wire_node.lua:79
+msgid "Red"
+msgstr ""
+
+#: wire_node.lua:79
+msgid "Green"
+msgstr ""
+
+#: wire_node.lua:79
+msgid "Blue"
+msgstr ""
+
+#: wire_node.lua:82
 msgid "@1 Wire"
 msgstr ""

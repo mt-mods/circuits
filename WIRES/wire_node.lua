@@ -60,7 +60,7 @@ if c.is_mod_enabled("default") then
 		output = c.mod()..":wire_off 9",
 		recipe = {
 			{"default:papyrus", "default:papyrus", "default:papyrus"},
-			{"default:copper_ingot", "default:copper_ingot", "default:copper_ingot"},
+			{"copper_wire_spool", "copper_wire_spool", "copper_wire_spool"},
 			{"default:papyrus", "default:papyrus", "default:papyrus"}
 		}
 	})
@@ -72,11 +72,14 @@ local colors = {
 	blue = "^[colorize:#00F:160",
 }
 
-for _, color in ipairs{"red", "green", "blue"} do
+for k, color in ipairs{"red", "green", "blue"} do
 	local def = table.copy(wire)
 	local col_string = colors[color]
-	local color_trans = color:gsub("^%l", string.upper)
-	def.description = S("@1 Wire", color_trans)
+	local function color_translated(i)
+		local color_trans = {S("Red"), S("Green"), S("Blue")}
+		return color_trans[i]
+	end
+	def.description = S("@1 Wire", color_translated(k))
 	def.tiles[1] = def.tiles[1] .. col_string
 	def.groups = {dig_immediate=2,["circuit_wire_"..color]=1,circuit_wire=1}
 	def.connects_to = {"group:circuit_raw_wire", "group:circuit_wire_" .. color
@@ -95,7 +98,7 @@ for _, color in ipairs{"red", "green", "blue"} do
 			output = "wire_"..color.." 9",
 			recipe = {
 				{"default:papyrus", "dye:"..color, "default:papyrus"},
-				{"default:copper_ingot", "default:copper_ingot", "default:copper_ingot"},
+				{"copper_wire_spool", "copper_wire_spool", "copper_wire_spool"},
 				{"default:papyrus", "dye:"..color, "default:papyrus"}
 			}
 		})
