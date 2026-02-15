@@ -1,4 +1,5 @@
 # Circuits
+
 A modpack for the voxel game engine luanti, originally made by qwertymine3, [GitHub](https://github.com/Qwertymine), [forums](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=16371).  
 Currently manantained/developed by Sheriff_U3, [GitHub](https://github.com/Sheriff-Unit-3), [forums](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=53881), [ContentDB](https://content.luanti.org/users/Sheriff-Unit-3/).  
 
@@ -24,9 +25,6 @@ Items:
 * Light Bulb, used in anything that lights up.  
 * Wrench, like the screwdriver, left over from old version of the mod. (disabled by default)
 
-## Known Issues
-* Textures overlapping  
-
 ## Mods Supported
 Mods currently supported:
 * Doors from MTG
@@ -36,6 +34,22 @@ Games currently supported:
 * MTG  
 Other games will work, but may not have support for all the features of this mod.  
 Support for the Mineclone games is not planned, Mineclone just isn't built for this sort of mod.
+
+## Translation status:
+
+<a href="https://translate.codeberg.org/engage/circuits/">
+<img src="https://translate.codeberg.org/widget/circuits/circuits/fr/svg-badge.svg" alt="French Translation status" />
+</a>
+<a href="https://translate.codeberg.org/engage/circuits/">
+<img src="https://translate.codeberg.org/widget/circuits/circuits/de/svg-badge.svg" alt="Germen Translation status" />
+</a>
+<a href="https://translate.codeberg.org/engage/circuits/">
+<img src="https://translate.codeberg.org/widget/circuits/circuits/it/svg-badge.svg" alt="Italian Translation status" />
+</a>
+<a href="https://translate.codeberg.org/engage/circuits/">
+<img src="https://translate.codeberg.org/widget/circuits/circuits/es/svg-badge.svg" alt="Spanish Translation status" />
+</a>
+
 
 ## Licensing
 This mod is licensed under [MIT](https://opensource.org/license/mit) by Sheriff_U3,
