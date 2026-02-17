@@ -1,16 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: sheriff_u3@noreply.codeberg.org\n"
 "POT-Creation-Date: 2026-02-14 09:38-0600\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-02-17 15:29+0000\n"
+"Last-Translator: Sheriff_U3 <sheriff_u3@noreply.codeberg.org>\n"
+"Language-Team: German <https://translate.codeberg.org/projects/circuits/"
+"circuits/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #: modpack.conf:2
 msgid "Circuits"
@@ -42,7 +44,7 @@ msgstr ""
 
 #: wrench.lua:26
 msgid "Wrench"
-msgstr ""
+msgstr "Schraubenschlüssel"
 
 #: disappear.lua:5
 msgid "Disappearing Node"
@@ -50,11 +52,11 @@ msgstr ""
 
 #: indicator.lua:5
 msgid "Indicator"
-msgstr ""
+msgstr "Indikator"
 
 #: light.lua:5
 msgid "Light"
-msgstr ""
+msgstr "Licht"
 
 #: vanish.lua:5
 msgid "Vanishing Node"
@@ -62,7 +64,7 @@ msgstr ""
 
 #: button.lua:17
 msgid "Button"
-msgstr ""
+msgstr "Taste"
 
 #: entity_detector.lua:17
 msgid "Entity Detector"
@@ -78,7 +80,7 @@ msgstr ""
 
 #: lever.lua:18
 msgid "Lever"
-msgstr ""
+msgstr "Hebel"
 
 #: player_detector.lua:17
 msgid "Player Detector"
@@ -86,7 +88,7 @@ msgstr ""
 
 #: pressure_plate.lua:15
 msgid "Pressure Plate"
-msgstr ""
+msgstr "Druckplatte"
 
 #: solar_panel.lua:16
 msgid "Solar Panel"
@@ -114,15 +116,15 @@ msgstr ""
 
 #: wire_node.lua:79
 msgid "Red"
-msgstr ""
+msgstr "Rot"
 
 #: wire_node.lua:79
 msgid "Green"
-msgstr ""
+msgstr "Grüner"
 
 #: wire_node.lua:79
 msgid "Blue"
-msgstr ""
+msgstr "Blau"
 
 #: wire_node.lua:82
 msgid "@1 Wire"
