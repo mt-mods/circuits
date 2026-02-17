@@ -1,16 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: sheriff_u3@noreply.codeberg.org\n"
 "POT-Creation-Date: 2026-02-14 09:38-0600\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-02-17 15:29+0000\n"
+"Last-Translator: Sheriff_U3 <sheriff_u3@noreply.codeberg.org>\n"
+"Language-Team: Italian <https://translate.codeberg.org/projects/circuits/"
+"circuits/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #: modpack.conf:2
 msgid "Circuits"
@@ -50,11 +52,11 @@ msgstr ""
 
 #: indicator.lua:5
 msgid "Indicator"
-msgstr ""
+msgstr "Indicatore"
 
 #: light.lua:5
 msgid "Light"
-msgstr ""
+msgstr "Luce"
 
 #: vanish.lua:5
 msgid "Vanishing Node"
@@ -62,7 +64,7 @@ msgstr ""
 
 #: button.lua:17
 msgid "Button"
-msgstr ""
+msgstr "Bottone"
 
 #: entity_detector.lua:17
 msgid "Entity Detector"
@@ -78,7 +80,7 @@ msgstr ""
 
 #: lever.lua:18
 msgid "Lever"
-msgstr ""
+msgstr "Interruttore"
 
 #: player_detector.lua:17
 msgid "Player Detector"
@@ -101,8 +103,9 @@ msgid "Lightbulb"
 msgstr ""
 
 #: craftitems.lua:20
+#, fuzzy
 msgid "Spool"
-msgstr ""
+msgstr "Bobina"
 
 #: craftitems.lua:26
 msgid "Copper Wire Spool"
@@ -110,20 +113,21 @@ msgstr ""
 
 #: wire_node.lua:5
 msgid "Wire"
-msgstr ""
+msgstr "filo metallico"
 
 #: wire_node.lua:79
 msgid "Red"
-msgstr ""
+msgstr "Rosso"
 
 #: wire_node.lua:79
 msgid "Green"
-msgstr ""
+msgstr "Verde"
 
 #: wire_node.lua:79
 msgid "Blue"
-msgstr ""
+msgstr "Blù"
 
 #: wire_node.lua:82
+#, fuzzy
 msgid "@1 Wire"
-msgstr ""
+msgstr "@1 filo metallico"
