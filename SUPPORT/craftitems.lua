@@ -1,7 +1,7 @@
 local S, PS = core.get_translator("circuits")
 local c = circuits
 
--- for use in crafting recipes
+-- For use in crafting recipes.
 core.register_craftitem(c.mod()..":circuit_board",{
   description = S("Circuit Board"),
   inventory_image = "circuits_circuit_board.png",
@@ -55,7 +55,7 @@ if c.is_mod_enabled("default") then
 
   -- spool
   core.register_craft({
-    output = "spool 10",
+    output = "spool 9",
     recipe = {
       {"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
       {"", "default:steel_ingot", ""},

@@ -42,7 +42,7 @@ if c.is_mod_enabled("default") then
       connects_to = {"group:circuit_consumer", "group:circuit_wire"},
       circuits = circuits_def,
       on_construct = function(pos)
-        circuits.on_construct(pos)
+        c.on_construct(pos)
         if on_construct then
           return on_construct(pos)
         end
@@ -61,7 +61,7 @@ if c.is_mod_enabled("default") then
         return timer_return
       end,
       on_destruct = function(pos)
-        circuits.on_destruct(pos)
+        c.on_destruct(pos)
         if on_destruct then
           return on_destruct(pos)
         end

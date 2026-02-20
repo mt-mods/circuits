@@ -9,7 +9,7 @@ local indicator = {
 	paramtype2 = "facedir",
 	is_ground_content = false,
 	walkable = true,
-	groups = {choppy=1,circuit_consumer=1},
+	groups = {cracky=1,circuit_consumer=1},
 	connects_to = {"group:circuit_wire","group:circuit_power"},
 	circuits = {
 		connects = c.local_area,
@@ -41,7 +41,7 @@ local indicator = {
 
 c.register_on_off(c.mod()..":indicator",indicator,
 {
-	groups = {choppy=1,circuit_consumer=1,not_in_creative_inventory=1}
+	groups = {cracky=1,circuit_consumer=1,not_in_creative_inventory=1}
 },
 {
 	tiles = {"circuits_indicator_off.png"}

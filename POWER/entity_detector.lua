@@ -18,7 +18,7 @@ local detector = {
   tiles = {"circuits_entity_detector_on.png"},
   paramtype = "light",
   is_ground_content = false,
-  groups = {choppy=1,detector=1,circuit_power=1,not_in_creative_inventory=1},
+  groups = {cracky=1,detector=1,circuit_power=1,not_in_creative_inventory=1},
   stack_max = c.stack_max(),
   on_construct = function(pos)
     core.get_node_timer(pos):start(0.1)
@@ -63,7 +63,7 @@ local detector = {
 
 c.register_on_off(c.mod()..":entity_detector",detector,{},{
   tiles = {"circuits_entity_detector_off.png"},
-  groups = {choppy=1,detector=1,circuit_power=1}
+  groups = {cracky=1,detector=1,circuit_power=1}
 })
 
 -- crafts

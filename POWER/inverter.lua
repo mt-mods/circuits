@@ -17,7 +17,7 @@ local inverter = {
 	tiles = {"circuits_inverter.png"},
 	paramtype2 = "facedir",
 	is_ground_content = false,
-	groups = {choppy=1,circuit_consumer=1,circuit_power=1},
+	groups = {cracky=1,circuit_consumer=1,circuit_power=1,not_in_creative_inventory=1},
 	stack_max = c.stack_max(),
 	circuits = {
 		base_node = c.mod()..":inverter",
@@ -66,6 +66,6 @@ local inverter = {
 
 c.register_on_off(c.mod()..":inverter",inverter,
 {
-	groups = {choppy=1,circuit_consumer=1,circuit_power=1,not_in_creative_inventory=1}
+	groups = {cracky=1,circuit_consumer=1,circuit_power=1,not_in_creative_inventory=1}
 },
 {})

@@ -33,11 +33,11 @@ c.register_on_off = function(name,def,on_def,off_def)
 end
 
 -- Get the circuits table of a node
--- returns nil if does not exist
+-- returns false if does not exist
 c.get_circuit_def = function(node_name)
 	local def = core.registered_nodes[node_name]
 	if not def or not def.circuits then
-		return nil
+		return false
 	end
 
 	return def.circuits
