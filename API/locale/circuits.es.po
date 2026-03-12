@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: sheriff_u3@noreply.codeberg.org\n"
 "POT-Creation-Date: 2026-02-14 09:38-0600\n"
-"PO-Revision-Date: 2026-02-17 02:55+0000\n"
-"Last-Translator: Sheriff_U3 <sheriff_u3@noreply.codeberg.org>\n"
+"PO-Revision-Date: 2026-03-11 12:29+0000\n"
+"Last-Translator: gallegonovato <gallegonovato@noreply.codeberg.org>\n"
 "Language-Team: Spanish <https://translate.codeberg.org/projects/circuits/"
 "circuits/es/>\n"
 "Language: es\n"
@@ -16,11 +16,11 @@ msgstr ""
 
 #: modpack.conf:2
 msgid "Circuits"
-msgstr ""
+msgstr "Circuitos"
 
 #: modpack.conf:3
 msgid "Circuits, a basic redstone-like mod."
-msgstr ""
+msgstr "Circuits, un mod básico similar a Redstone."
 
 #: mod.conf:2
 msgid "Adds API for circuits."
