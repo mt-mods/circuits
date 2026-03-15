@@ -5,6 +5,7 @@
     "vector",
     "bit",
     "doors",
-    "circuits"
+    "circuits",
+    "mesecon"
   ]
 }

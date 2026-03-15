@@ -157,12 +157,23 @@ end
 
 -- checks if a mod has been enabled for this world
 function c.is_mod_enabled(mod)
-	if mod and core.get_modpath(mod) then return true
-	else return false
+	if mod and core.get_modpath(mod) then
+		return true
+	else
+		return false
 	end
 end
 
 -- gets the current mod's name
 function c.mod()
 	return core.get_current_modname()
+end
+
+-- check if a pos1 and pos2 are the same
+function c.is_same_pos(pos1, pos2)
+	if pos2.x ~= pos1.x or pos2.y ~= pos1.y or pos2.z ~= pos1.z then
+		return false
+	else
+		return true
+	end
 end

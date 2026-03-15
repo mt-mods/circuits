@@ -58,7 +58,7 @@ if c.is_mod_enabled("default") then
     output = "vanish",
     recipe = {
       {"group:stone", "circuit_board", "group:stone"},
-      {"default:copper_ingot", "default:mese", "default:copper_ingot"},
+      {"copper_wire_spool", "default:mese", "copper_wire_spool"},
       {"group:stone", "circuit_board", "group:stone"}
     }
   })

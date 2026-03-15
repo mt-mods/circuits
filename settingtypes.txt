@@ -14,11 +14,14 @@ circuits_button_on_timer (Button Press Time) int 1 1 60
 #  Whether levers can turn off like buttons or not
 circuits_lever_auto_off (Auto Turn Off Levers) bool false
 
-# Requires: circuits_lever_auto_off
+#  Requires: circuits_lever_auto_off
 circuits_lever_on_timer (Lever On Time) int 5 1 360
 
-# How far laser detectors can connect
+#  How far laser detectors can connect
 circuits_laser_connect_range (Laser Connect Range) int 10 3 100
+
+#  The lower this is the faster it will detect a power change
+circuits_converter_refresh_rate (Converter Refresh Rate) float 0.3 0.1 2
 
 [Item Settings]
 

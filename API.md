@@ -6,14 +6,13 @@ with a grain of salt.
 # Supporting Circuits in your own mods
 ## Groups
 There are three main groups used by the mod. `circuit_power` is the group that 
-all power providing nodes should use. `circuit_wire` is the group that all wire 
+all power providing nodes should use. `circuit_wire` is the group that all conductive 
 nodes should use. And `circuit_consumer` is the group that all power using nodes 
 should use.
 
 ## Definition Table
 This mod requires that any node that will/should connect to a network have a 
-circuits definition table. It is recommended that you fill out this by hand, 
-we are working on a helper function that will make this easier.
+circuits definition table.
 
 ## on_construct and on_destruct
 You will need to add `circuits.on_construct(pos)` to your node's on_construct function.
@@ -59,6 +58,7 @@ circuits.on_construct(pos)
 -- @param pos table
 circuits.on_destruct(pos)
 ```
+
 ### add_circuit_def
 WARNING: This is an experimental function and should only be used for testing.
 ```lua
@@ -75,6 +75,7 @@ function circuits.add_circuit_def(connect, connects, storage, on_update)
 
 # Util Functions
 These functions are contained within the `util.lua` file.
+
 ## register_on_off
 ```lua
 --- Used to register both the on and the off nodes.
@@ -84,6 +85,7 @@ These functions are contained within the `util.lua` file.
 -- @param off_def table Node def with values that only the off node should have.
 circuits.register_on_off(name,def,on_def,off_def)
 ```
+
 ## get_circuit_def
 ```lua
 --- Used to get the circuit definition from the node definition table.
@@ -92,6 +94,7 @@ circuits.register_on_off(name,def,on_def,off_def)
 -- @return false If the node name is not valid or that node has no circuits table.
 circuits.get_circuit_def(node_name)
 ```
+
 ## get_powered
 ```lua
 --- Get the powered version name of the node located at the pos given.
@@ -100,6 +103,7 @@ circuits.get_circuit_def(node_name)
 -- @return string Name of the node's powered version.
 circuits.get_powered(npos)
 ```
+
 ## get_off
 ```lua
 --- Get the off version name of the node located at the pos given.
@@ -108,6 +112,7 @@ circuits.get_powered(npos)
 -- @return string Name of the node's off version.
 circuits.get_off(npos)
 ```
+
 ## is_on
 ```lua
 --- Check if the node is on or off at the given pos
@@ -117,6 +122,7 @@ circuits.get_off(npos)
 -- @return nil If the node is not on or off, or if pos was not supplied.
 circuits.is_on(npos)
 ```
+
 ## npos
 ```lua
 --- Mutate a pos into a npos.
@@ -125,18 +131,21 @@ circuits.is_on(npos)
 -- @return npos
 circuits.npos(pos[, node])
 ```
+
 ## on_construct
 ```lua
 --- Attempts to connect all nodes next to that pos
 -- @param pos table The pos at which to attempt to connect nodes.
 circuits.on_construct(pos)
 ```
+
 ## on_destruct
 ```lua
 --- Disconnects all nodes attached to that pos
 -- @param pos table
 circuits.on_destruct(pos)
 ```
+
 ## register_node
 ```lua
 --- Registers nodes, used internally
@@ -145,8 +154,32 @@ circuits.on_destruct(pos)
 circuits.register_node(name, def)
 ```
 
+## is_mod_enabled
+```lua
+--- Checks if a mod is enabled for a the current world
+-- @param mod string The mod name to check
+-- @return boolean false if it's not enabled, true if it's enabled.
+circuits.is_mod_enabled(mod)
+```
+
+## mod
+```lua
+--- Returns the current loading mod name.
+-- @return string The mod's name.
+circuits.mod()
+```
+
+##  is_same_pos
+```lua
+--- Checks if pos1 is the same as pos2.
+-- @param pos1 table position 1
+-- @param pos2 table position 2
+-- @return boolean false if they are not the same, true if they are.
+circuits.is_same_pos(pos1, pos2)
+
 # Connect Functions
 These functions are contained within the `connection.lua` file.
+
 ## connect
 ```lua
 --- Attempt to connect 2 nodes together.
@@ -156,6 +189,7 @@ These functions are contained within the `connection.lua` file.
 -- @return true If connection is made.
 circuits.connect(a, b)
 ```
+
 ## disconnect
 ```lua
 --- Disconnect node b from node a
@@ -165,6 +199,7 @@ circuits.connect(a, b)
 -- @return false If disconnection fails.
 circuits.disconnect(a, b)
 ```
+
 ## connect_all
 ```lua
 --- Connects a node to all nearby nodes.
@@ -172,6 +207,7 @@ circuits.disconnect(a, b)
 -- @return node If connection attempts are made.
 circuits.connect_all(node)
 ```
+
 ## disconnect_all
 ```lua
 --- Disconnects all connects for a node.
@@ -180,6 +216,7 @@ circuits.connect_all(node)
 -- @return false If disconnection fails.
 circuits.disconnect_all
 ```
+
 ## get_connected_in_dir
 ```lua
 --- Tells you if it's connected in that direction?
@@ -188,6 +225,7 @@ circuits.disconnect_all
 -- @param flags
 circuits.get_connected_in_dir(npos, dir, flags)
 ```
+
 ## is_connected
 ```lua
 --- Tells you if a node is connected.
@@ -197,16 +235,19 @@ circuits.get_connected_in_dir(npos, dir, flags)
 -- @return false If node is not connected.
 circuits.is_connected(npos, to)
 ```
+
 ## get_all_connected
 ```lua
 --- Gets all connnections for a node.
 -- @param node table npos of the node.
 -- @return table
--- @return false If operation fails.
+-- @return boolean False if operation fails.
+circuits.get_all_connected(node)
 ```
 
 # Position Functions
 These functions are contained within the `position.lua` file.
+
 ## dir_to_mount
 ```lua
 --- Gives you the mapping matrix for each direction.
@@ -214,6 +255,7 @@ These functions are contained within the `position.lua` file.
 -- @return mounts
 circuits.dir_to_mount(dir)
 ```
+
 ## pos_wallmount_relative
 ```lua
 --- Converts wallmounted pos to a relative pos.
@@ -222,6 +264,7 @@ circuits.dir_to_mount(dir)
 -- @param pos real pos of node.
 circuits.pos_wallmout_relative(wallmount, npos, pos)
 ```
+
 ## wallmount_real_pos
 ```lua
 --- Converts wallmounted relative pos into real pos.
@@ -230,6 +273,7 @@ circuits.pos_wallmout_relative(wallmount, npos, pos)
 -- @param rpos table relative pos.
 circuits.wallmount_real_pos(wallmounted, npos, rpos)
 ```
+
 ## facedir_to_dir
 ```lua
 --- Gives you the vertical axis and axis transformations of a facedif node.
@@ -237,6 +281,7 @@ circuits.wallmount_real_pos(wallmounted, npos, rpos)
 -- @return vertical axes and axis transformation.
 circuits.facedir_to_dir(facedir)
 ```
+
 ## pos_facedir_relative
 ```lua
 --- Transforms pos to pos relative to a facedir node.
@@ -245,6 +290,7 @@ circuits.facedir_to_dir(facedir)
 -- @param pos table real pos.
 circuits.pos_facedir_relative(facedir, npos, pos)
 ```
+
 ## facedir_real_pos
 ```lua
 --- Transform real pos into pos relative to facedir node.
@@ -253,28 +299,33 @@ circuits.pos_facedir_relative(facedir, npos, pos)
 -- @param rpos talbe real pos.
 circuits.facedir_real_pos(facedir, npos, rpos)
 ```
+
 ## relative_pos
 ```lua
 -- @param node
 -- @param pos
 circuits.relative_pos(node, pos)
 ```
+
 ## relative_real_pos
 ```lua
 -- @param node
 -- @param rpos
 circuits.relative_real_pos(node, rpos)
 ```
+
 ## invert_relative
 ```lua
 -- @param dir
 circuits.invert_relative(dir)
 ```
+
 ## rpos_is_dir
 ```lua
 -- @param rpos
 circuits.rpos_is_dir(rpos)
 ```
+
 ## rot_relative_pos
 ```lua
 --- Takes two npos and gives you rpos of node a relative to any rotation a might have.
@@ -282,6 +333,7 @@ circuits.rpos_is_dir(rpos)
 -- @param b table npos of node b.
 circuits.rot_relative_pos(a, b)
 ```
+
 ## rot_relative_real_pos
 ```lua
 --- Takes a npos and an rpos, returns the real pos, relative to any rotation a might have.
@@ -292,6 +344,7 @@ circuits.rot_relative_real_pos(a, rpos)
 
 # Power Functions
 These functions are contained within the `power.lua` file.
+
 ## is_powering
 ```lua
 --- Checks if the npos node is powering.
@@ -301,6 +354,7 @@ These functions are contained within the `power.lua` file.
 -- @return false If the node does not have a circuit powering definition.
 circuits.is_powering(npos, node)
 ```
+
 ## wait
 ```lua
 --- Inserts a delayed update.
@@ -309,6 +363,7 @@ circuits.is_powering(npos, node)
 -- @param no_ticks The delay for the update.
 circuits.wait(npos, args, no_ticks)
 ```
+
 ## update
 ```lua
 --- Creates an update with no delay.
@@ -316,6 +371,7 @@ circuits.wait(npos, args, no_ticks)
 -- @param args Any arguments for the update.
 circuits.update(npos, args)
 ```
+
 ## power_update
 ```lua
 --- Creates a power update with no delay.
@@ -326,6 +382,7 @@ circuits.power_update(npos, args)
 
 # Wire Functions
 This function is contained within the `wire.lua` file.
+
 ## wire.update
 ```lua
 --- Updates the wire.

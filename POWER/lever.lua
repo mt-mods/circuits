@@ -1,19 +1,20 @@
+-- local variables
 local S, PS = core.get_translator("circuits")
 local c = circuits
+local auto_off = core.settings:get("circuits_lever_auto_off") or false
+local on_time = tonumber(core.settings:get("circuits_lever_on_timer")) or 5
 
+-- local functions
 local function power_on(npos)
 	npos.node.name = c.get_powered(npos)
 	core.swap_node(npos,npos.node)
 end
-
 local function power_off(npos)
 	npos.node.name = c.get_off(npos)
 	core.swap_node(npos,npos.node)
 end
 
-local auto_off = core.settings:get("circuits_lever_auto_off") or false
-local on_time = tonumber(core.settings:get("circuits_lever_on_timer")) or 5
-
+-- definition
 local lever = {
 	description = S("Lever"),
 	drawtype = "mesh",
@@ -37,17 +38,20 @@ local lever = {
 	connects_to = {"group:circuit_wire"},
 	on_rightclick = function(pos,node,clicker,itemstack,pointed_thing)
 		local npos = c.npos(pos,node)
+
 		if not c.is_on(npos) then
 			c.power_update(npos,"on")
     elseif c.is_on(npos) then
       c.power_update(npos, "off")
 		end
+
     if auto_off then
 		  core.get_node_timer(pos):start(on_time)
     end
 	end,
 	on_timer = function(pos,_)
 		local npos = c.npos(pos)
+
 		if c.is_on(npos) then
 			c.power_update(npos,"off")
 		end
@@ -70,14 +74,16 @@ local lever = {
 			for _,node in ipairs(c.get_all_connected(npos)) do
 				c.update(node)
 			end
+
 			return true
 		end,
-		powering = function(npos, rpos)
+		powering = function(npos)
 			return c.is_on(npos)
 		end
 	}
 }
 
+-- register the nodes
 circuits.register_on_off(c.mod()..":lever",lever,
 {
   mesh = "circuits_lever_up.gltf",
@@ -91,13 +97,19 @@ circuits.register_on_off(c.mod()..":lever",lever,
 
 -- crafts
 if c.is_mod_enabled("default") then
-  core.register_craft({output="lever 4",recipe={
-    {"group:wood"},
-    {"copper_wire_spool"}}
+  core.register_craft({
+		output = "lever 4",
+		recipe = {
+    	{"group:wood"},
+    	{"copper_wire_spool"}
+		}
   })
 elseif c.is_mod_enabled("blk") then
-	core.register_craft({output="lever 4",recipe={
-    {"group:wood_planks"},
-    {"copper_bar"}
-  }})
+	core.register_craft({
+		output = "lever 4",
+		recipe = {
+  	  {"group:wood_planks"},
+    	{"copper_bar"}
+  	}
+	})
 end

@@ -64,8 +64,11 @@ local inverter = {
 	},
 }
 
-c.register_on_off(c.mod()..":inverter",inverter,
-{
-	groups = {cracky=1,circuit_consumer=1,circuit_power=1,not_in_creative_inventory=1}
-},
-{})
+c.register_on_off(
+  c.mod()..":inverter",
+  inverter,
+  {
+	  groups = {cracky=1,circuit_consumer=1,circuit_power=1,not_in_creative_inventory=1}
+  },
+  {}
+)
