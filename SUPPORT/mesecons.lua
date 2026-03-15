@@ -2,12 +2,16 @@ local S, PS = core.get_translator("circuits")
 local c = circuits
 local name = c.mod()..":converter"
 local rules = mesecon.rules.flat
-local refresh_rate = tonumber(core.settings:get("circuits_converter_refresh_rate")) or 0.2
+local refresh_rate = tonumber(core.settings:get("circuits_converter_refresh_rate")) or 0.3
 
 local converter = {
   description = S("Converter"),
   drawtype = "normal",
-  tiles = {"circuits_converter_on.png"},
+  tiles = {
+    "circuits_converter_top_on.png",
+    "circuits_converter_bottom_on.png",
+    "circuits_converter_side_on.png"
+  },
   use_texture_alpha = "clip",
   is_ground_content = false,
   mesecon_wire = false,
@@ -125,7 +129,11 @@ c.register_on_off(name, converter,
     }
   },
   {
-    tiles = {"circuits_converter_off.png"},
+    tiles = {
+      "circuits_converter_top_off.png",
+      "circuits_converter_bottom_off.png",
+      "circuits_converter_side_off.png"
+     },
     groups = {cracky=1, converter=1, circuit_consumer=1},
     mesecons = {
       receptor = {
