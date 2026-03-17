@@ -1,11 +1,12 @@
 local S, PS = core.get_translator("circuits")
 local c = circuits
+local refresh_rate = tonumber(core.settings:get("circuits_pressure_plate_refresh_rate")) or 0.2
 
+-- local functions
 local function power_on(npos)
 	npos.node.name = c.get_powered(npos)
 	core.swap_node(npos,npos.node)
 end
-
 local function power_off(npos)
 	npos.node.name = c.get_off(npos)
 	core.swap_node(npos,npos.node)
@@ -33,7 +34,7 @@ local pressure_plate = {
 	groups = {choppy=1,source=1,circuit_power=1},
 	stack_max = c.stack_max(),
 	on_construct = function(pos)
-		core.get_node_timer(pos):start(0.1)
+		core.get_node_timer(pos):start(refresh_rate)
 	end,
 	on_timer = function(pos,_)
 		local npos = c.npos(pos)

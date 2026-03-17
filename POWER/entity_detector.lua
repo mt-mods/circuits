@@ -1,17 +1,17 @@
 local S, PS = core.get_translator("circuits")
 local c = circuits
+local range = tonumber(core.settings:get("circuits_detector_range")) or 5
+local refresh_rate = tonumber(core.settings:get("circuits_detector_refresh_rate")) or 0.3
 
+-- local functions
 local function power_on(npos)
 	npos.node.name = c.get_powered(npos)
 	core.swap_node(npos,npos.node)
 end
-
 local function power_off(npos)
 	npos.node.name = c.get_off(npos)
 	core.swap_node(npos,npos.node)
 end
-
-local range = tonumber(core.settings:get("circuits_detector_range")) or 5
 
 local detector = {
   description = S("Entity Detector"),
@@ -21,7 +21,7 @@ local detector = {
   groups = {cracky=1,detector=1,circuit_power=1,not_in_creative_inventory=1},
   stack_max = c.stack_max(),
   on_construct = function(pos)
-    core.get_node_timer(pos):start(0.1)
+    core.get_node_timer(pos):start(refresh_rate)
   end,
   on_timer = function(pos,_)
     local npos = c.npos(pos)

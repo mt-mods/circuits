@@ -1,12 +1,34 @@
-[Networking Settings]
+[Networking]
 
 #  Sets the max number of nodes in a network
 circuits_network_size (Network Size) int 50 10 1000
 
-[Power Settings]
+[Range]
 
 #  Sets the range of player and entity detectors
-circuits_detector_range (Detector Range) int 5 5 50
+circuits_detector_range (Detector Range) int 5 3 50
+
+#  How far laser detectors can connect
+circuits_laser_connect_range (Laser Connect Range) int 10 3 100
+
+[Refresh Rate]
+
+#  The lower this is the faster it will detect a power change
+circuits_converter_refresh_rate (Converter) float 0.3 0.1 2
+
+#  The lower this is the faster it will detect a player on it
+circuits_pressure_plate_refresh_rate (Pressure Plate) float  0.2 0.1 2
+
+#  The lower this is the faster it will detect a player or entity
+circuits_detector_refresh_rate (Detectors) float 0.3 0.1 2
+
+#  This should stay very low for best results
+circuits_laser_refresh_rate (Laser) float 0.05 0.01 0.75
+
+#  This does not need to happen very often
+circuits_solar_panel_refresh_rate (Solar Panel) int 30 1 60
+
+[Buttons & Levers]
 
 #  Sets how long a button will stay on for
 circuits_button_on_timer (Button Press Time) int 1 1 60
@@ -17,13 +39,7 @@ circuits_lever_auto_off (Auto Turn Off Levers) bool false
 #  Requires: circuits_lever_auto_off
 circuits_lever_on_timer (Lever On Time) int 5 1 360
 
-#  How far laser detectors can connect
-circuits_laser_connect_range (Laser Connect Range) int 10 3 100
-
-#  The lower this is the faster it will detect a power change
-circuits_converter_refresh_rate (Converter Refresh Rate) float 0.3 0.1 2
-
-[Item Settings]
+[Items]
 
 #  Enables the wrench, it's similar to MTG's screwdriver
 circuits_wrench_enabled (Wrench) bool false

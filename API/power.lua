@@ -4,12 +4,12 @@ local c = circuits
 -- node - npos of powered? node
 c.is_powering = function(npos, node)
 	if not npos or not node then
-		return error("[Circuits]: npos or node is not defined in circuits.is_powering()")
+		return error("[Circuits]: circuits.is_powering() npos or node is not defined")
   elseif not npos.node then
-		npos.node = c.npos(npos)
+		npos = c.npos(npos)
 	end
 	if not node.node then
-		node.node = c.npos(node)
+		node = c.npos(node)
 	end
 	local cd = c.get_circuit_def(npos.node.name)
 
@@ -22,9 +22,7 @@ end
 -- c.pending is in persistance.lua
 local function insert_update(update, type)
 	if not update or not type then
-		return error("[Circuits]: update or type is not defined in "..
-			"local insert_update()"
-		)
+		return error("[Circuits]: local insert_update() update or type is not defined")
 	end
 	local update_list = c.pending
 
@@ -34,7 +32,7 @@ end
 
 local function cons_or_wire(name)
 	if not name then
-		return error("[Circuits]: name is not defined in local cons_or_wire()")
+		return error("[Circuits]: local cons_or_wire() name is not defined")
 	end
 	local is_wire = core.get_item_group(name, "circuit_wire")
 	if is_wire > 0 then
@@ -49,9 +47,9 @@ end
 
 c.wait = function(npos, args, no_ticks)
 	if not npos then
-		return error("[Circuits]: npos is not defined in circuits.wait()")
+		return error("[Circuits]: circuits.wait() npos is not defined")
 	elseif not npos.node then
-		npos.node = c.npos(npos)
+		npos = c.npos(npos)
 	end
 	local update = {
 		npos = npos,
@@ -61,38 +59,42 @@ c.wait = function(npos, args, no_ticks)
 	insert_update(update,"wait")
 end
 
-c.update = function(npos, args)
-	if not npos then
-		return error("[Circuits]: npos is not defined in circuits.update()")
-	elseif not npos.node then
-		npos.node = c.npos(npos)
-	end
-	local type = cons_or_wire(npos.node.name)
-	local update = {
-		npos = npos,
-		args = args
-	}
-	insert_update(update,type)
-end
-
 c.power_update = function(npos, args)
 	if not npos then
-		return error("[Circuits]: npos is not defined in circuits.power_update()")
+		return error("[Circuits]: circuits.power_update() npos is not defined")
 	elseif not npos.node then
-		npos.node = c.npos(npos)
+		npos = c.npos(npos)
 	end
 	local update = {
 		npos = npos,
 		args = args
 	}
-	insert_update(update,"power")
+	insert_update(update, "power")
+end
+
+c.update = function(npos, args)
+	if not npos then
+		return error("[Circuits]: circuits.update() npos is not defined")
+	elseif not npos.node then
+		npos = c.npos(npos)
+	end
+	local type = cons_or_wire(npos.node.name)
+	if not type then
+		c.power_update(npos, args)
+		return
+	end
+	local update = {
+		npos = npos,
+		args = args
+	}
+	insert_update(update, type)
 end
 
 local function is_valid_update(npos)
 	if not npos then
 		return nil
 	elseif not npos.node then
-		return error("[Circuits]: npos.node is not defined in local is_valid_update()")
+		return error("[Circuits]: local is_valid_update() npos.node is not defined")
 	end
 
 	local cd = c.get_circuit_def(npos.node.name)

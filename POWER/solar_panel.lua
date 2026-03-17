@@ -1,11 +1,11 @@
 local S, PS = core.get_translator("circuits")
 local c = circuits
+local refresh_rate = tonumber(core.settings:get("circuits_solar_panel_refresh_rate")) or 30
 
 local function power_on(npos)
 	npos.node.name = c.get_powered(npos)
 	core.swap_node(npos,npos.node)
 end
-
 local function power_off(npos)
 	npos.node.name = c.get_off(npos)
 	core.swap_node(npos,npos.node)
@@ -28,7 +28,7 @@ local solar_panel = {
 	stack_max = c.stack_max(),
   connects_to = {"group:circuit_consumer","group:wire"},
 	on_construct = function(pos)
-		core.get_node_timer(pos):start(0.5)
+		core.get_node_timer(pos):start(refresh_rate)
 	end,
 	on_timer = function(pos,_)
 		local npos = c.npos(pos)

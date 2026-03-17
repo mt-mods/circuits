@@ -53,7 +53,7 @@ c.get_powered = function(npos)
 	if not npos then
 		return error("[Circuits]: circuits.get_powered() npos is not defined")
 	elseif not npos.node then
-		npos.node = c.npos(npos)
+		npos = c.npos(npos)
 	end
 	local cd = c.get_circuit_def(npos.node.name)
 
@@ -68,7 +68,7 @@ c.get_off = function(npos)
 	if not npos then
 		return error("[Circuits]: circuits.get_off() npos is not defined")
 	elseif not npos.node then
-		npos.node = c.npos(npos)
+		npos = c.npos(npos)
 	end
 	local cd = c.get_circuit_def(npos.node.name)
 
@@ -85,7 +85,7 @@ c.is_on = function(npos)
 		return error("[Circuits]: circuits.is_on() npos is not defined"
 		)
 	elseif not npos.node then
-		npos.node = c.npos(npos)
+		npos = c.npos(npos)
 	end
 	if npos.node.name == c.get_off(npos) then
 		return false

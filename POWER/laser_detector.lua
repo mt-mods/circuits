@@ -1,7 +1,9 @@
 local S, PS = core.get_translator("circuits")
 local c = circuits
-
 local range = tonumber(core.settings:get("circuits_laser_connect_range")) or 10
+local refresh_rate = tonumber(core.settings:get("circuits_laser_refresh_rate")) or 0.05
+
+-- local functions
 local function ray_points(pos, pos2)
   local pos_start = {}
   local pos_end = {}
@@ -46,7 +48,7 @@ local detector = {
   groups = {cracky=1,laser=1,detector=1,circuit_power=1,not_in_creative_inventory=1},
   stack_max = c.stack_max(),
   on_construct = function(pos)
-    core.get_node_timer(pos):start(0.01)
+    core.get_node_timer(pos):start(refresh_rate)
     local pos_table = {
       {x=pos.x+range, y=pos.y, z=pos.z}, {x=pos.x-range, y=pos.y, z=pos.z},
       {x=pos.x, y=pos.y+range, z=pos.z}, {x=pos.x, y=pos.y-range, z=pos.z},
