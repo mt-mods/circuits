@@ -4,7 +4,10 @@ local c = circuits
 -- A definition table to be shared between the on and off nodes.
 -- A definition table for both the on and off node.
 -- Registers two nodes and an alias for the off node.
-c.register_on_off = function(name,def,on_def,off_def)
+c.register_on_off = function(name, def, on_def, off_def)
+	if not name or not def or not on_def or not off_def then
+		return error("[Circuits]: circuits.register_on_off() is missing arguments")
+	end
 	local name_on = name .. "_on"
 	local name_off = name .. "_off"
 
@@ -35,6 +38,9 @@ end
 -- Get the circuits table of a node
 -- returns false if does not exist
 c.get_circuit_def = function(node_name)
+	if not node_name then
+		return error("[Circuits]: circuits.get_circuit_def() node_name is not defined")
+	end
 	local def = core.registered_nodes[node_name]
 	if not def or not def.circuits then
 		return false
@@ -44,6 +50,11 @@ c.get_circuit_def = function(node_name)
 end
 
 c.get_powered = function(npos)
+	if not npos then
+		return error("[Circuits]: circuits.get_powered() npos is not defined")
+	elseif not npos.node then
+		npos.node = c.npos(npos)
+	end
 	local cd = c.get_circuit_def(npos.node.name)
 
 	if not cd or not cd.powered then
@@ -54,6 +65,11 @@ c.get_powered = function(npos)
 end
 
 c.get_off = function(npos)
+	if not npos then
+		return error("[Circuits]: circuits.get_off() npos is not defined")
+	elseif not npos.node then
+		npos.node = c.npos(npos)
+	end
 	local cd = c.get_circuit_def(npos.node.name)
 
 	if not cd or not cd.off then
@@ -65,6 +81,12 @@ end
 
 -- gets whether the node is on or off
 c.is_on = function(npos)
+	if not npos then
+		return error("[Circuits]: circuits.is_on() npos is not defined"
+		)
+	elseif not npos.node then
+		npos.node = c.npos(npos)
+	end
 	if npos.node.name == c.get_off(npos) then
 		return false
 	end
@@ -78,26 +100,36 @@ end
 -- pos - a position
 -- [node] - a node
 c.npos = function(pos, node)
-	if not node then
+	if not pos then
+		return error("[Circuits]: circuits.npos() pos is not defined")
+	elseif not node then
 		node = core.get_node(pos)
 	end
 	pos.node = node
 	return pos
 end
 
-
 c.on_construct = function(pos)
+	if not pos then
+		return error("[Circuits]: circuits.on_construct() pos is not defined")
+	end
 	pos = c.npos(pos)
 	c.connect_all(pos)
 end
 
 c.on_destruct = function(pos)
+	if not pos then
+		return error("[Circuits]: circuits.on_destruct() pos is not defined")
+	end
 	pos = c.npos(pos)
 	c.disconnect_all(pos)
 end
 
 -- requires the node name and node definition table
 c.register_node = function(name, def)
+	if not name or not def then
+		return error("[Circuits]: circuits.register_node() name or def is not defined")
+	end
 	def.circuits = def.circuits or {}
 	local cd = def.circuits
 
@@ -132,7 +164,7 @@ c.register_node = function(name, def)
 
 	-- Check that consumers/power have updates
 	if (def.groups.circuit_power or def.groups.circuit_consumer) and not cd.on_update then
-		error("Consumer/Producer defined without update")
+		core.log("error", "Consumer/Producer defined without update")
 	elseif def.groups.circuit_wire then
 		cd.on_update = c.wire_update
 	end
@@ -157,6 +189,9 @@ end
 
 -- checks if a mod has been enabled for this world
 function c.is_mod_enabled(mod)
+	if not mod then
+		return error("[Circuits]: circuits.is_mod_enabled() mod is not defined")
+	end
 	if mod and core.get_modpath(mod) then
 		return true
 	else
@@ -171,7 +206,9 @@ end
 
 -- check if a pos1 and pos2 are the same
 function c.is_same_pos(pos1, pos2)
-	if pos2.x ~= pos1.x or pos2.y ~= pos1.y or pos2.z ~= pos1.z then
+	if not pos1 or not pos2 then
+		return error("[Circuits]: circuits.is_same_pos() pos1 or pos2 is not defined")
+	elseif pos2.x ~= pos1.x or pos2.y ~= pos1.y or pos2.z ~= pos1.z then
 		return false
 	else
 		return true
