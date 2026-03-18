@@ -11,7 +11,7 @@ jobs:
            sudo apt-get update
            sudo apt-get install -y luarocks
        - name: luacheck install
-         run: luarocks install --local luacheck
+         run: luarocks install luacheck
        - name: luacheck run
          run: |
            export PATH="$PATH:$(luarocks config user_bin)"
