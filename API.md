@@ -4,6 +4,13 @@ Many of these descriptions may be incomplete, missing, or incorrect. Take everyt
 with a grain of salt.  
 
 # Supporting Circuits in your own mods
+> [!NOTE]
+> There is a table called npos referenced in many of the functions, it is a pos
+> with a node table contained within it. It's used for transferring the node's state
+> before/as it's been placed in the world, it's left over from an old version of the 
+> mod and to remove it would require a rewrite of the entire mod. Most of the simple
+> api's will work with the regular pos table though.
+
 ## Groups
 There are three main groups used by the mod. `circuit_power` is the group that 
 all power providing nodes should use. `circuit_wire` is the group that all conductive 
@@ -60,7 +67,10 @@ circuits.on_destruct(pos)
 ```
 
 ### add_circuit_def
-WARNING: This is an experimental function and should only be used for testing.
+> [!WARNING]
+> This is an experimental function and should only be used for testing,
+> at last check it did not work.
+
 ```lua
 --- Should be placed in circuits = in the node definition table.
 -- @param connect string values are "area", or "behind".
@@ -83,7 +93,7 @@ These functions are contained within the `util.lua` file.
 -- @param def table Node def that should be shared for both nodes.
 -- @param on_def table Node def with values that only the on node should have.
 -- @param off_def table Node def with values that only the off node should have.
-circuits.register_on_off(name,def,on_def,off_def)
+circuits.register_on_off(name, def, on_def, off_def)
 ```
 
 ## get_circuit_def
@@ -91,7 +101,7 @@ circuits.register_on_off(name,def,on_def,off_def)
 --- Used to get the circuit definition from the node definition table.
 -- @param node_name string The full name of the node.
 -- @return circuits table If included in that nodes definition table.  
--- @return false If the node name is not valid or that node has no circuits table.
+-- @return boolean False if the node name is not valid or that node has no circuits table.
 circuits.get_circuit_def(node_name)
 ```
 
@@ -117,9 +127,8 @@ circuits.get_off(npos)
 ```lua
 --- Check if the node is on or off at the given pos
 -- @param npos table The npos of the node.
--- @return true If the node is on.
--- @return false If the node is off.
--- @return nil If the node is not on or off, or if pos was not supplied.
+-- @return boolean True If the node is on. False If the node is off.
+-- @return nil If the node is not on or off, or if npos was not supplied.
 circuits.is_on(npos)
 ```
 
@@ -158,7 +167,7 @@ circuits.register_node(name, def)
 ```lua
 --- Checks if a mod is enabled for a the current world
 -- @param mod string The mod name to check
--- @return boolean false if it's not enabled, true if it's enabled.
+-- @return boolean False if it's not enabled, true if it's enabled.
 circuits.is_mod_enabled(mod)
 ```
 

@@ -1,5 +1,9 @@
 local c = circuits
 
+-- helper variables
+circuits.hash_pos = core.hash_node_position
+circuits.unhash_pos = core.get_position_from_hash
+
 -- Requires the node's name with out _on or _off.
 -- A definition table to be shared between the on and off nodes.
 -- A definition table for both the on and off node.
