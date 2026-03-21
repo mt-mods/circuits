@@ -3,7 +3,7 @@ circuits = {}
 -- info about circuits
 circuits.info = {
 	name = "circuits",
-	version = "v1.2.0"
+	version = "v1.3.0-dev"
 }
 
 -- funcion to load files
