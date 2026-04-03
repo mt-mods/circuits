@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: sheriff_u3@noreply.codeberg.org\n"
 "POT-Creation-Date: 2026-03-17 12:05-0500\n"
-"PO-Revision-Date: 2026-03-11 12:29+0000\n"
+"PO-Revision-Date: 2026-04-04 19:57+0000\n"
 "Last-Translator: gallegonovato <gallegonovato@noreply.codeberg.org>\n"
 "Language-Team: Spanish <https://translate.codeberg.org/projects/circuits/"
 "circuits/es/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 5.16.2\n"
 
 #: modpack.conf:2
 msgid "Circuits"
@@ -24,23 +24,23 @@ msgstr "Circuits, un mod básico similar a Redstone."
 
 #: API/mod.conf:2
 msgid "Adds API for circuits"
-msgstr ""
+msgstr "Añade una API para circuitos"
 
 #: CONSUMERS/mod.conf:2
 msgid "Adds circuits consumer nodes."
-msgstr ""
+msgstr "Añade nodos de consumo a los circuitos."
 
 #: POWER/mod.conf:2
 msgid "Adds circuits power nodes."
-msgstr ""
+msgstr "Añade nodos de alimentación a los circuitos."
 
 #: SUPPORT/mod.conf:2
 msgid "Adds circuits support for other mods."
-msgstr ""
+msgstr "Añade compatibilidad con circuitos para otros mods."
 
 #: WIRES/mod.conf:2
 msgid "Adds circuits wire nodes."
-msgstr ""
+msgstr "Añade nodos de cableado a los circuitos."
 
 #: API/wrench.lua:26
 msgid "Wrench"
@@ -60,11 +60,11 @@ msgstr "Verde"
 
 #: WIRES/wire_node.lua:84
 msgid "Blue"
-msgstr ""
+msgstr "Azul"
 
 #: WIRES/wire_node.lua:87
 msgid "@1 Wire"
-msgstr ""
+msgstr "@1 Cable"
 
 #: POWER/lever.lua:19
 msgid "Lever"
@@ -72,23 +72,23 @@ msgstr "Palanca"
 
 #: POWER/player_detector.lua:17
 msgid "Player Detector"
-msgstr ""
+msgstr "Detector de jugadores"
 
 #: POWER/inverter.lua:15
 msgid "Inverter"
-msgstr ""
+msgstr "Inversor"
 
 #: POWER/entity_detector.lua:17
 msgid "Entity Detector"
-msgstr ""
+msgstr "Detector de entidades"
 
 #: POWER/laser_detector.lua:44
 msgid "Laser Detector"
-msgstr ""
+msgstr "Detector de láser"
 
 #: POWER/pressure_plate.lua:16
 msgid "Pressure Plate"
-msgstr ""
+msgstr "Placa de presión"
 
 #: POWER/button.lua:17
 msgid "Button"
@@ -96,19 +96,19 @@ msgstr "Botón"
 
 #: POWER/solar_panel.lua:16
 msgid "Solar Panel"
-msgstr ""
+msgstr "Panel solar"
 
 #: SUPPORT/mesecons.lua:8
 msgid "Converter"
-msgstr ""
+msgstr "Convertidor"
 
 #: SUPPORT/craftitems.lua:6
 msgid "Circuit Board"
-msgstr ""
+msgstr "Placa de circuito impreso"
 
 #: SUPPORT/craftitems.lua:13
 msgid "Lightbulb"
-msgstr ""
+msgstr "Bombilla"
 
 #: SUPPORT/craftitems.lua:20
 msgid "Spool"
@@ -116,11 +116,11 @@ msgstr "Carrete"
 
 #: SUPPORT/craftitems.lua:27
 msgid "Copper Wire Spool"
-msgstr ""
+msgstr "Bobina de alambre de cobre"
 
 #: CONSUMERS/vanish.lua:5
 msgid "Vanishing Node"
-msgstr ""
+msgstr "Nodo desaparecido"
 
 #: CONSUMERS/light.lua:5
 msgid "Light"
@@ -128,7 +128,7 @@ msgstr "Linterna"
 
 #: CONSUMERS/disappear.lua:5
 msgid "Disappearing Node"
-msgstr ""
+msgstr "Nodo que desaparece"
 
 #: CONSUMERS/indicator.lua:5
 msgid "Indicator"
