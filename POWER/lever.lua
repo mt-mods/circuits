@@ -109,7 +109,7 @@ elseif c.is_mod_enabled("blk") then
 		output = "lever 4",
 		recipe = {
   	  {"group:wood_planks"},
-    	{"copper_bar"}
+    	{"copper_wire_spool"}
   	}
 	})
 end

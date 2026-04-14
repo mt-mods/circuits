@@ -81,7 +81,7 @@ circuits.register_on_off(c.mod()..":button",button,
 
 -- crafts
 if c.is_mod_enabled("default") then
-  core.register_craft({output="button",recipe={{"group:wood"}}})
+  core.register_craft({output="button",recipe={{"group:wood"},{"copper_wire_spool"}}})
 elseif c.is_mod_enabled("blk") then
-	core.register_craft({output="button",recipe={{"group:wood_planks"}}})
+	core.register_craft({output="button",recipe={{"group:wood_planks"},{"copper_wire_spool"}}})
 end
