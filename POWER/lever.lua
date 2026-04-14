@@ -100,6 +100,7 @@ if c.is_mod_enabled("default") then
   core.register_craft({
 		output = "lever 4",
 		recipe = {
+			{"group:wood"},
     	{"group:wood"},
     	{"copper_wire_spool"}
 		}
@@ -108,6 +109,7 @@ elseif c.is_mod_enabled("blk") then
 	core.register_craft({
 		output = "lever 4",
 		recipe = {
+			{"group:wood_planks"},
   	  {"group:wood_planks"},
     	{"copper_wire_spool"}
   	}
