@@ -1,29 +1,22 @@
-on: [push, pull_request]
+name: Luacheck
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+
 jobs:
   luacheck:
-    runs-on: codeberg-tiny-lazy
-    container:
-      image: ghcr.io/catthehacker/ubuntu:act-latest
-    steps:
-       - name: keyword check
-         id: check
-         shell: bash
-         run: |
-           TITLE="${{ github.event.pull_request.title }}"
-           MSG="${{ github.event.head_commit.message }}"
-           if [[ "$TITLE" =~ (WIP|Draft|Weblate) ]] || [[ "$MSG" =~ (Weblate) ]]; then
-             echo "match=true" >> $GITHUB_OUTPUT
-           else
-             echo "match=false" >> $GITHUB_OUTPUT
-           fi
+    runs-on: ubuntu-latest
 
-       - name: checkout
-         if: steps.check.outputs.match != 'true'
+    steps:
+       - name: Clone repository
          uses: https://code.forgejo.org/actions/checkout@v4
-       - name: install and run luacheck
-         if: steps.check.outputs.match != 'true'
-         run: |
-           sudo apt-get update && sudo apt-get install -y luarocks
-           luarocks install luacheck
-           export PATH="$PATH:$(luarocks config user_bin)"
-           luacheck ./ --only 0 --globals core minetest vector bit circuits mesecon doors default
+
+       - name: Install luacheck
+         run: sudo apt-get update && sudo apt-get install -y lua-check
+
+       - name: Run luacheck
+         run: luacheck --config ./.luacheckrc .
