@@ -3,43 +3,43 @@ local c = circuits
 
 local function power_on(npos)
 	npos.node.name = c.get_powered(npos)
-	core.swap_node(npos,npos.node)
+	core.swap_node(npos, npos.node)
 end
 
 local function power_off(npos)
 	npos.node.name = c.get_off(npos)
-	core.swap_node(npos,npos.node)
+	core.swap_node(npos, npos.node)
 end
 
 local inverter = {
 	description = S("Inverter"),
 	drawtype = "normal",
-	tiles = {"circuits_inverter.png"},
+	tiles = { "circuits_inverter.png" },
 	paramtype2 = "facedir",
 	is_ground_content = false,
-	groups = {cracky=1,circuit_consumer=1,circuit_power=1,not_in_creative_inventory=1},
+	groups = { cracky = 1, circuit_consumer = 1, circuit_power = 1, not_in_creative_inventory = 1 },
 	stack_max = c.stack_max(),
 	circuits = {
-		base_node = c.mod()..":inverter",
+		base_node = c.mod() .. ":inverter",
 		connects = c.local_area,
-		connects_to = {"circuit_consumer","circuit_wire","circuit_power"},
+		connects_to = { "circuit_consumer", "circuit_wire", "circuit_power" },
 		store_connect = "meta",
 		on_update = function(npos, args, type)
 			if type == "power" then
 				if args == "on" and not c.is_on(npos) then
 					power_on(npos)
-				elseif args =="off" and c.is_on(npos) then
+				elseif args == "off" and c.is_on(npos) then
 					power_off(npos)
 				else
 					return false
 				end
 
-				for _,node in ipairs(c.get_all_connected(npos)) do
+				for _, node in ipairs(c.get_all_connected(npos)) do
 					c.update(node)
 				end
 				return true
 			elseif type == "consumer" then
-				local node = c.get_connected_in_dir(npos,{x=0, y=-1, z=0})
+				local node = c.get_connected_in_dir(npos, { x = 0, y = -1, z = 0 })
 				local power
 				if not node then
 					power = false
@@ -47,9 +47,9 @@ local inverter = {
 					power = c.is_powering(node, npos)
 				end
 				if not power and not c.is_on(npos) then
-					c.power_update(npos,"on")
+					c.power_update(npos, "on")
 				elseif power and c.is_on(npos) then
-					c.power_update(npos,"off")
+					c.power_update(npos, "off")
 				end
 				return false
 			end
@@ -64,11 +64,6 @@ local inverter = {
 	},
 }
 
-c.register_on_off(
-  c.mod()..":inverter",
-  inverter,
-  {
-	  groups = {cracky=1,circuit_consumer=1,circuit_power=1,not_in_creative_inventory=1}
-  },
-  {}
-)
+c.register_on_off(c.mod() .. ":inverter", inverter, {
+	groups = { cracky = 1, circuit_consumer = 1, circuit_power = 1, not_in_creative_inventory = 1 },
+}, {})

@@ -1,1 +1,1 @@
-circuits.modpath("/wire_node.lua")
+circuits.modpath("/src/wire_node.lua")

@@ -14,15 +14,15 @@ local function is_facedir(npos)
 end
 
 local dir_to_facedir = {
-	[c.hash_pos({x=0,y=1,z=0})] = 0,
-	[c.hash_pos({x=0,y=-1,z=0})] = 20,
-	[c.hash_pos({x=1,y=0,z=0})] = 12,
-	[c.hash_pos({x=-1,y=0,z=0})] = 16,
-	[c.hash_pos({x=0,y=0,z=1})] = 4,
-	[c.hash_pos({x=0,y=0,z=-1})] = 8
+	[c.hash_pos({ x = 0, y = 1, z = 0 })] = 0,
+	[c.hash_pos({ x = 0, y = -1, z = 0 })] = 20,
+	[c.hash_pos({ x = 1, y = 0, z = 0 })] = 12,
+	[c.hash_pos({ x = -1, y = 0, z = 0 })] = 16,
+	[c.hash_pos({ x = 0, y = 0, z = 1 })] = 4,
+	[c.hash_pos({ x = 0, y = 0, z = -1 })] = 8,
 }
 
-core.register_craftitem(c.mod()..":wrench", {
+core.register_craftitem(c.mod() .. ":wrench", {
 	description = S("Wrench"),
 	inventory_image = "circuits_wrench.png",
 	on_use = function(itemstack, placer, pointed_thing)
@@ -34,7 +34,7 @@ core.register_craftitem(c.mod()..":wrench", {
 		local node = core.get_node(pointed_thing.under)
 		local name = node.name
 		-- Prevents use on the wrench on chests
-		if string.find(name,"chest") then
+		if string.find(name, "chest") then
 			core.log("Don't use the wrench on a chest!")
 			return nil
 		end
@@ -56,7 +56,7 @@ core.register_craftitem(c.mod()..":wrench", {
 		local node = core.get_node(pointed_thing.under)
 		local name = node.name
 		-- Prevents use on the wrench on chests
-		if string.find(name,"chest") then
+		if string.find(name, "chest") then
 			core.log("Don't use the wrench on a chest!")
 			return nil
 		end
@@ -70,18 +70,18 @@ core.register_craftitem(c.mod()..":wrench", {
 		end
 		npos.node.param2 = new_rot
 		core.set_node(npos, npos.node)
-	end
+	end,
 })
-core.register_alias("wrench", c.mod()..":wrench")
+core.register_alias("wrench", c.mod() .. ":wrench")
 
 -- crafts
 if c.is_mod_enabled("default") then
-  core.register_craft({
-    output = "wrench",
-    recipe = {
-      {"", "default:steel_ingot", ""},
-      {"default:steel_ingot", "default:steel_ingot", ""},
-			{"", "", "default:steel_ingot"}
-    }
-  })
+	core.register_craft({
+		output = "wrench",
+		recipe = {
+			{ "", "default:steel_ingot", "" },
+			{ "default:steel_ingot", "default:steel_ingot", "" },
+			{ "", "", "default:steel_ingot" },
+		},
+	})
 end

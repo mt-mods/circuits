@@ -1,15 +1,15 @@
 local c = circuits
 
 local function is_wire(name)
-	return core.get_item_group(name,"circuit_wire") > 0
+	return core.get_item_group(name, "circuit_wire") > 0
 end
 
 local max_net_items = tonumber(core.settings:get("circuits_network_size")) or 50
 local function get_wire_network(npos)
-	local network = {npos}
-	local seen = {[c.hash_pos(npos)] = npos}
+	local network = { npos }
+	local seen = { [c.hash_pos(npos)] = npos }
 	local powered = false
-	for i=1,max_net_items do
+	for i = 1, max_net_items do
 		local item = network[i]
 		if not item then
 			break
@@ -18,11 +18,10 @@ local function get_wire_network(npos)
 		if is_wire(item.node.name) then
 			for _, node in ipairs(c.get_all_connected(item)) do
 				if not seen[c.hash_pos(node)] then
-					network[#network+1] = node
+					network[#network + 1] = node
 					seen[c.hash_pos(node)] = node
 				end
-				if not powered
-				and core.get_item_group(node.node.name,"circuit_power") > 0 then
+				if not powered and core.get_item_group(node.node.name, "circuit_power") > 0 then
 					powered = powered or c.is_powering(node, item)
 				end
 			end
@@ -59,9 +58,9 @@ c.wire_update = function(npos)
 			local new_name = to_function(node)
 			if node.node.name ~= new_name then
 				node.node.name = new_name
-				core.swap_node(node,node.node)
+				core.swap_node(node, node.node)
 			end
-		elseif core.get_item_group(node.node.name,"circuit_consumer") > 0 then
+		elseif core.get_item_group(node.node.name, "circuit_consumer") > 0 then
 			c.update(node)
 		end
 	end

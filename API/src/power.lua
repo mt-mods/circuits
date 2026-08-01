@@ -5,7 +5,7 @@ local c = circuits
 c.is_powering = function(npos, node)
 	if not npos or not node then
 		return error("[Circuits]: circuits.is_powering() npos or node is not defined")
-  elseif not npos.node then
+	elseif not npos.node then
 		npos = c.npos(npos)
 	end
 	if not node.node then
@@ -16,7 +16,7 @@ c.is_powering = function(npos, node)
 	if not cd or not cd.powering or not c.is_connected(npos, node) then
 		return false
 	end
-	return cd.powering(npos,c.rot_relative_pos(npos, node))
+	return cd.powering(npos, c.rot_relative_pos(npos, node))
 end
 
 -- c.pending is in persistance.lua
@@ -27,7 +27,7 @@ local function insert_update(update, type)
 	local update_list = c.pending
 
 	update_list[type] = update_list[type] or {}
-	update_list[type][#update_list[type]+1] = update
+	update_list[type][#update_list[type] + 1] = update
 end
 
 local function cons_or_wire(name)
@@ -54,9 +54,9 @@ c.wait = function(npos, args, no_ticks)
 	local update = {
 		npos = npos,
 		args = args,
-		delay = no_ticks
+		delay = no_ticks,
 	}
-	insert_update(update,"wait")
+	insert_update(update, "wait")
 end
 
 c.power_update = function(npos, args)
@@ -67,7 +67,7 @@ c.power_update = function(npos, args)
 	end
 	local update = {
 		npos = npos,
-		args = args
+		args = args,
 	}
 	insert_update(update, "power")
 end
@@ -85,7 +85,7 @@ c.update = function(npos, args)
 	end
 	local update = {
 		npos = npos,
-		args = args
+		args = args,
 	}
 	insert_update(update, type)
 end
@@ -101,8 +101,7 @@ local function is_valid_update(npos)
 	local node = core.get_node(npos)
 	local new_cd = c.get_circuit_def(node.name)
 
-	if not cd or not new_cd
-	or cd.base_node ~= new_cd.base_node then
+	if not cd or not new_cd or cd.base_node ~= new_cd.base_node then
 		return nil
 	end
 
@@ -117,7 +116,7 @@ local no_ticks_sec = 12
 local timer = -5
 core.register_globalstep(function(dtime)
 	timer = timer + dtime
-	if timer < 1/no_ticks_sec then
+	if timer < 1 / no_ticks_sec then
 		return
 	else
 		timer = 0
@@ -128,13 +127,13 @@ core.register_globalstep(function(dtime)
 	end
 
 	-- Handle basic updates
-	for _, power_type in ipairs{"power", "wire", "consumer"} do
-		for _,update in ipairs(c.pending[power_type] or {}) do
+	for _, power_type in ipairs({ "power", "wire", "consumer" }) do
+		for _, update in ipairs(c.pending[power_type] or {}) do
 			-- Check that node is still the same
 			local npos, cd = is_valid_update(update.npos)
 			if npos and cd and cd.on_update then
 				-- Update if possible
-				cd.on_update(npos,update.args,power_type)
+				cd.on_update(npos, update.args, power_type)
 			end
 		end
 		c.pending[power_type] = nil
@@ -142,7 +141,7 @@ core.register_globalstep(function(dtime)
 
 	local replace = 1
 	-- Handle items in the wait queue
-	for i=1,#c.pending.wait do
+	for i = 1, #c.pending.wait do
 		local update = c.pending.wait[i]
 
 		update.delay = update.delay - 1
@@ -150,7 +149,7 @@ core.register_globalstep(function(dtime)
 			local npos, cd = is_valid_update(update.npos)
 			if npos and cd and cd.on_wait then
 				-- Update if possible
-				cd.on_wait(npos,update.args,"wait")
+				cd.on_wait(npos, update.args, "wait")
 			end
 		else
 			c.pending.wait[replace] = update
@@ -158,7 +157,7 @@ core.register_globalstep(function(dtime)
 		end
 	end
 	-- Remove duplicate/consumed items
-	for i=#c.pending.wait,replace+1,-1 do
+	for i = #c.pending.wait, replace + 1, -1 do
 		c.pending.wait[i] = nil
 	end
 end)

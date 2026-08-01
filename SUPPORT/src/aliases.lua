@@ -1,6 +1,6 @@
 local function alias(old_name, new_name)
-  core.register_alias("circuits:"..old_name.."_on", new_name.."_on")
-  core.register_alias("circuits:"..old_name.."_off", new_name.."_off")
+	core.register_alias("circuits:" .. old_name .. "_on", new_name .. "_on")
+	core.register_alias("circuits:" .. old_name .. "_off", new_name .. "_off")
 end
 alias("lamp", "circuits_consumers:light")
 alias("indicator", "circuits_consumers:indicator")

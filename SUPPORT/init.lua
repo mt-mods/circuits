@@ -1,12 +1,15 @@
 local c = circuits
 
-c.modpath("/aliases.lua")
-c.modpath("/doors.lua")
-c.modpath("/mod.lua")
-c.modpath("/craftitems.lua")
+c.modpath("/src/aliases.lua")
+c.modpath("/src/doors.lua")
+c.modpath("/src/mod.lua")
+c.modpath("/src/craftitems.lua")
+
 if c.is_mod_enabled("mesecons") then
-  c.modpath("/mesecons.lua")
+	c.modpath("/src/mesecons.lua")
 end
--- currently does not work, need to solve issues with circuits definition not being found
+--[[
+currently does not work, need to solve issues with circuits definition not being found
 -- c.modpath("/furnace.lua")
--- circuits.modpath("/chest.lua")
+-- c.modpath("/chest.lua")
+]]

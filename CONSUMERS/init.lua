@@ -1,4 +1,4 @@
-circuits.modpath("/indicator.lua")
-circuits.modpath("/light.lua")
-circuits.modpath("/vanish.lua")
-circuits.modpath("/disappear.lua")
+circuits.modpath("/src/indicator.lua")
+circuits.modpath("/src/light.lua")
+circuits.modpath("/src/vanish.lua")
+circuits.modpath("/src/disappear.lua")

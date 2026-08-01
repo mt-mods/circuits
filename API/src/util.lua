@@ -24,7 +24,7 @@ c.register_on_off = function(name, def, on_def, off_def)
 	local on = table.copy(on_def)
 	local off = table.copy(off_def)
 
-	for k,v in pairs(def) do
+	for k, v in pairs(def) do
 		on[k] = on[k] or v
 		off[k] = off[k] or v
 	end
@@ -34,8 +34,8 @@ c.register_on_off = function(name, def, on_def, off_def)
 	local alias_off = string.gsub(name_off, "^.*:", "")
 	local alias = string.gsub(alias_off, "_off", "")
 
-	c.register_node(name_on,on)
-	c.register_node(name_off,off)
+	c.register_node(name_on, on)
+	c.register_node(name_off, off)
 	core.register_alias(alias, name_off)
 end
 
@@ -86,8 +86,7 @@ end
 -- gets whether the node is on or off
 c.is_on = function(npos)
 	if not npos then
-		return error("[Circuits]: circuits.is_on() npos is not defined"
-		)
+		return error("[Circuits]: circuits.is_on() npos is not defined")
 	elseif not npos.node then
 		npos = c.npos(npos)
 	end
@@ -153,7 +152,7 @@ c.register_node = function(name, def)
 	cd.store_connect = cd.store_connect or "meta"
 
 	-- Create construct/destruct
-	for _, action in ipairs{"on_construct", "on_destruct"} do
+	for _, action in ipairs({ "on_construct", "on_destruct" }) do
 		if def[action] then
 			local circuits_action = c[action]
 			local def_action = def[action]

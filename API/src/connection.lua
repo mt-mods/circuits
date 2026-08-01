@@ -8,12 +8,12 @@ local max_dist = 2
 -- Conversion table to change dirs to bit
 -- patters - for use in param stores
 local dir_bits = {
-	[c.hash_pos({x=0,y=1,z=0})] = 0x04,
-	[c.hash_pos({x=0,y=-1,z=0})] = 0x08,
-	[c.hash_pos({x=1,y=0,z=0})] = 0x10,
-	[c.hash_pos({x=-1,y=0,z=0})] = 0x20,
-	[c.hash_pos({x=0,y=0,z=1})] = 0x40,
-	[c.hash_pos({x=0,y=0,z=-1})] = 0x80,
+	[c.hash_pos({ x = 0, y = 1, z = 0 })] = 0x04,
+	[c.hash_pos({ x = 0, y = -1, z = 0 })] = 0x08,
+	[c.hash_pos({ x = 1, y = 0, z = 0 })] = 0x10,
+	[c.hash_pos({ x = -1, y = 0, z = 0 })] = 0x20,
+	[c.hash_pos({ x = 0, y = 0, z = 1 })] = 0x40,
+	[c.hash_pos({ x = 0, y = 0, z = -1 })] = 0x80,
 }
 c.dir_bits = dir_bits
 
@@ -23,7 +23,7 @@ c.dir_bits = dir_bits
 -- returns - the new flag setting
 local function bit_connect(connect_flags, dir)
 	local to_relative = c.hash_pos(dir)
-	return bit.bor(connect_flags,dir_bits[to_relative])
+	return bit.bor(connect_flags, dir_bits[to_relative])
 end
 
 -- Sets the correct connection bit low
@@ -35,7 +35,6 @@ local function bit_disconnect(connect_flags, dir)
 	return bit.band(connect_flags, bit.bnot(dir_bits[to_relative]))
 end
 
-
 -- Applies a connection modification to the given node
 -- node - npos of the node to modify
 -- dir - the direction to modify
@@ -45,14 +44,12 @@ local function map_connect_mod(node, dir, mod)
 
 	if cd.store_connect == "param1" then
 		node.node.param1 = mod(node.node.param1, dir)
-
 	elseif cd.store_connect == "param2" then
 		node.node.param2 = mod(node.node.param2, dir)
-
 	elseif cd.store_connect == "meta" then
-		local pos = {x = node.x, y = node.y, z = node.z}
+		local pos = { x = node.x, y = node.y, z = node.z }
 		local meta = core.get_meta(pos)
-		meta:set_int("connect",mod(meta:get_int("connect"), dir))
+		meta:set_int("connect", mod(meta:get_int("connect"), dir))
 	end
 end
 
@@ -76,9 +73,8 @@ local function in_range(a_cd, rpos, dir)
 		return false
 	end
 
-	for _, axis in ipairs{"x", "y", "z"} do
-		if  dir[axis] ~= 0 
-		and a_cd.connects[axis] then
+	for _, axis in ipairs({ "x", "y", "z" }) do
+		if dir[axis] ~= 0 and a_cd.connects[axis] then
 			local dist
 			if dir[axis] > 0 then
 				dist = map_math(a_cd.connects[axis], math.max)
@@ -118,10 +114,9 @@ end
 -- Write connection changes to map
 local function set_connections(npos)
 	local cd = c.get_circuit_def(npos.node.name)
-	
+
 	if cd.store_connect == "param1" or cd.store_connect == "param2" then
 		core.swap_node(npos, npos.node)
-
 	elseif cd.store_connect == "meta" then
 		-- Already set
 	end
@@ -130,7 +125,7 @@ end
 -- Try to connect two nodes together - and do so if possible
 -- a - npos of a node
 -- b - npos of other node
-local function connect(a,b)
+local function connect(a, b)
 	if not a.node then
 		a.node = core.get_node(a)
 	end
@@ -146,15 +141,15 @@ local function connect(a,b)
 		return false
 	end
 
-	local a_rpos = c.rot_relative_pos(a,b)
+	local a_rpos = c.rot_relative_pos(a, b)
 	-- If they are not aligned to an axis - they cannot connect
 	if not c.rpos_is_dir(a_rpos) then
 		return false
 	end
 
-	local b_rpos = c.rot_relative_pos(b,a)
+	local b_rpos = c.rot_relative_pos(b, a)
 	-- If neither is in the range of the other - they can't connect
-	if  in_range(a_cd, a_rpos) + in_range(b_cd, b_rpos) < 3 then
+	if in_range(a_cd, a_rpos) + in_range(b_cd, b_rpos) < 3 then
 		return false
 	end
 
@@ -176,8 +171,10 @@ c.connect = connect
 -- a - npos of a node
 -- b - npos of other node
 local function disconnect(a, b)
-	if not a or not b then return false end
-	local b_rpos = c.rot_relative_pos(b,a)
+	if not a or not b then
+		return false
+	end
+	local b_rpos = c.rot_relative_pos(b, a)
 
 	-- If they are not aligned to an axis - they cannot disconnect
 	local dir = c.rpos_is_dir(b_rpos)
@@ -195,14 +192,15 @@ c.disconnect = disconnect
 local function connect_all(node)
 	local node_cd = c.get_circuit_def(node.node.name)
 	for axis, _ in pairs(node_cd.connects) do
-		for dir=1,-1,-2 do
-			for dist=1,max_dist do
-				local pos = {x=0, y=0, z=0}; pos[axis] = dir * dist
-				local to = c.rot_relative_real_pos(node,pos)
+		for dir = 1, -1, -2 do
+			for dist = 1, max_dist do
+				local pos = { x = 0, y = 0, z = 0 }
+				pos[axis] = dir * dist
+				local to = c.rot_relative_real_pos(node, pos)
 				to.node = core.get_node(to)
-	
+
 				-- Only one connection per side
-				if c.connect(node,to) then
+				if c.connect(node, to) then
 					break
 				end
 			end
@@ -215,7 +213,9 @@ c.connect_all = connect_all
 
 -- node - npos
 local function disconnect_all(node)
-	if not node then return false end
+	if not node then
+		return false
+	end
 	local node_cd = c.get_circuit_def(node.node.name)
 	for _, other in ipairs(c.get_all_connected(node)) do
 		disconnect(node, other)
@@ -231,18 +231,16 @@ local function get_bit_flags(node)
 	local cd = c.get_circuit_def(node.node.name)
 	if cd.store_connect == "param1" then
 		return node.node.param1
-
 	elseif cd.store_connect == "param2" then
 		return node.node.param2
-
 	elseif cd.store_connect == "meta" then
-		local pos = {x = node.x, y = node.y, z = node.z}
+		local pos = { x = node.x, y = node.y, z = node.z }
 		local meta = core.get_meta(pos)
 		return meta:get_int("connect")
 	end
 end
 
-local function get_connected_in_dir(npos,dir,flags)
+local function get_connected_in_dir(npos, dir, flags)
 	if not flags then
 		flags = get_bit_flags(npos)
 	end
@@ -252,19 +250,19 @@ local function get_connected_in_dir(npos,dir,flags)
 		return nil
 	end
 
-	if bit.band(flags,dir_bit) == 0 then
+	if bit.band(flags, dir_bit) == 0 then
 		return nil
 	end
 
-	for dist=1,max_dist do
+	for dist = 1, max_dist do
 		local rpos = vector.multiply(dir, dist)
-		local to = c.npos(c.rot_relative_real_pos(npos,rpos))
+		local to = c.npos(c.rot_relative_real_pos(npos, rpos))
 
 		local npos_cd = c.get_circuit_def(npos.node.name)
 		local to_cd = c.get_circuit_def(to.node.name)
 
 		-- If either is not allowed to connect - they cannot connect
-		if  allow_connect(npos_cd, to.node.name) and allow_connect(to_cd, npos.node.name) then
+		if allow_connect(npos_cd, to.node.name) and allow_connect(to_cd, npos.node.name) then
 			return to
 		end
 	end
@@ -274,17 +272,17 @@ end
 c.get_connected_in_dir = get_connected_in_dir
 
 local function is_connected(npos, to)
-	local dir = c.rpos_is_dir(c.rot_relative_pos(npos,to))
+	local dir = c.rpos_is_dir(c.rot_relative_pos(npos, to))
 	if not dir then
 		return false
 	end
 
-	local found = get_connected_in_dir(npos,dir)
+	local found = get_connected_in_dir(npos, dir)
 	if not found then
 		return false
 	end
 
-	if not vector.equals(to,found) then
+	if not vector.equals(to, found) then
 		return false
 	end
 
@@ -294,13 +292,15 @@ c.is_connected = is_connected
 
 -- node - npos
 local function get_all_connected(node)
-	if not node then return false end
+	if not node then
+		return false
+	end
 	local flags = get_bit_flags(node)
 	local connected = {}
-	for dir_hash,_ in pairs(c.dir_bits) do
-		local to = get_connected_in_dir(node,c.unhash_pos(dir_hash),flags)
+	for dir_hash, _ in pairs(c.dir_bits) do
+		local to = get_connected_in_dir(node, c.unhash_pos(dir_hash), flags)
 		if to then
-			connected[#connected+1] = to
+			connected[#connected + 1] = to
 		end
 	end
 	return connected
