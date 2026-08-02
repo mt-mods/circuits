@@ -1,5 +1,11 @@
 # Circuits
 
+[![ContentDB](https://content.luanti.org/packages/Sheriff-Unit-3/circuits/shields/downloads/)](https://content.luanti.org/packages/Sheriff-Unit-3/circuits/)
+[![Luanti Forums](https://img.shields.io/badge/Luanti%20Forums-32335-blue.svg)](https://forum.luanti.org/viewtopic.php?t=32335)
+[![Luacheck](https://codeberg.org/Sheriff_U3/circuits/badges/workflows/luacheck.yml/badge.svg)](https://codeberg.org/Sheriff_U3/circuits/actions?workflow=luacheck.yml)
+[![Code License](https://img.shields.io/badge/Code%20License-MIT-blue.svg)](/LICENSE)
+[![Media License](https://img.shields.io/badge/Media%20License-CC0%201.0-blue.svg)](/MEDIA%20LICENSE)
+
 A modpack for the voxel game engine luanti, originally made by qwertymine3, [GitHub](https://github.com/Qwertymine), [forums](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=16371).
 Currently manantained/developed by Sheriff_U3, [GitHub](https://github.com/Sheriff-Unit-3), [forums](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=53881), [ContentDB](https://content.luanti.org/users/Sheriff-Unit-3/).
 
@@ -62,4 +68,5 @@ Games currently supported:
 ## Licensing
 
 Code: [MIT](/LICENSE)
+
 Media: [CC0](/MEDIA%20LICENSE)
