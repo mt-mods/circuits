@@ -1,0 +1,45 @@
+name: Format Lua
+
+on:
+  pull_request:
+    branches: [main, master]
+    paths:
+      - "**.lua"
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: https://github.com/actions/checkout@main
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - run: |
+          curl -L -O https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-x86_64-musl.zip
+          unzip stylua-linux-x86_64-musl.zip
+          rm stylua-linux-x86_64-musl.zip
+          chmod +x stylua
+          mkdir -p "$HOME/.local/bin"
+          mv stylua "$HOME/.local/bin/"
+
+      - name: Run StyLua
+        run: ~/.local/bin/stylua --syntax Lua51 .
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "Codeberg CI"
+          git config user.email "ci@codeberg.org"
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add "**.lua"
+            git commit -m "[skip ci] Format Lua code"
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          else
+            echo "No formatting changes."
+          fi

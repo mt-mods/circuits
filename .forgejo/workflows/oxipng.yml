@@ -1,0 +1,46 @@
+name: Optimize PNGs
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+    paths:
+      - "**.png"
+
+jobs:
+  optimize-pngs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: https://code.forgejo.org/actions/checkout@main
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - run: |
+          curl -L -O "https://github.com/oxipng/oxipng/releases/download/v10.1.1/oxipng-10.1.1-x86_64-unknown-linux-musl.tar.gz"
+          tar -xzf oxipng-10.1.1-x86_64-unknown-linux-musl.tar.gz
+          rm oxipng-10.1.1-x86_64-unknown-linux-musl.tar.gz
+          mv oxipng-10.1.1-x86_64-unknown-linux-musl/oxipng ./
+          rm -rf oxipng-10.1.1-x86_64-unknown-linux-musl
+          chmod +x oxipng
+          mkdir -p "$HOME/.local/bin"
+          mv oxipng "$HOME/.local/bin/"
+
+      - name: Optimize PNGs
+        run: ~/.local/bin/oxipng -z --nc -p -s -r -o max .
+
+      - name: Commit
+        run: |
+          git config user.name "Codeberg CI"
+          git config user.email "ci@codeberg.org"
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add "**.png"
+            git commit -m "[skip ci] Optimize PNGs"
+            git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          else
+            echo "No files modified."
+          fi
