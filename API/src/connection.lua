@@ -117,8 +117,6 @@ local function set_connections(npos)
 
 	if cd.store_connect == "param1" or cd.store_connect == "param2" then
 		core.swap_node(npos, npos.node)
-	elseif cd.store_connect == "meta" then
-		-- Already set
 	end
 end
 
@@ -216,7 +214,6 @@ local function disconnect_all(node)
 	if not node then
 		return false
 	end
-	local node_cd = c.get_circuit_def(node.node.name)
 	for _, other in ipairs(c.get_all_connected(node)) do
 		disconnect(node, other)
 		set_connections(other)

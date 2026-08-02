@@ -1,4 +1,4 @@
-local S, PS = core.get_translator("circuits")
+local S = core.get_translator("circuits")
 local c = circuits
 
 -- For use in crafting recipes.
@@ -70,18 +70,6 @@ if c.is_mod_enabled("default") then
 			{ "spool", "spool", "spool" },
 			{ "default:copper_ingot", "default:copper_ingot", "default:copper_ingot" },
 			{ "spool", "spool", "spool" },
-		},
-	})
-
--- Blockd Support
-elseif c.is_mod_enabled("blk") then
-	-- circuit board
-	core.register_craft({
-		output = c.mod() .. ":circuit_board",
-		recipe = {
-			{ "iron_bar", "copper_bar", "iron_bar" },
-			{ "gold_bar", "group:circuit_wire", "gold_bar" },
-			{ "iron_bar", "copper_bar", "iron_bar" },
 		},
 	})
 end

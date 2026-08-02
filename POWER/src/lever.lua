@@ -1,5 +1,5 @@
 -- local variables
-local S, PS = core.get_translator("circuits")
+local S = core.get_translator("circuits")
 local c = circuits
 local auto_off = core.settings:get("circuits_lever_auto_off") or false
 local on_time = tonumber(core.settings:get("circuits_lever_on_timer")) or 5
@@ -101,15 +101,6 @@ if c.is_mod_enabled("default") then
 		recipe = {
 			{ "group:wood" },
 			{ "group:wood" },
-			{ "copper_wire_spool" },
-		},
-	})
-elseif c.is_mod_enabled("blk") then
-	core.register_craft({
-		output = "lever 4",
-		recipe = {
-			{ "group:wood_planks" },
-			{ "group:wood_planks" },
 			{ "copper_wire_spool" },
 		},
 	})

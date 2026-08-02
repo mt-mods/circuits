@@ -1,4 +1,4 @@
-local S, PS = core.get_translator("circuits")
+local S = core.get_translator("circuits")
 local c = circuits
 local range = tonumber(core.settings:get("circuits_laser_connect_range")) or 10
 local refresh_rate = tonumber(core.settings:get("circuits_laser_refresh_rate")) or 0.05

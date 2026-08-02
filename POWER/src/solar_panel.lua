@@ -1,4 +1,4 @@
-local S, PS = core.get_translator("circuits")
+local S = core.get_translator("circuits")
 local c = circuits
 local refresh_rate = tonumber(core.settings:get("circuits_solar_panel_refresh_rate")) or 30
 
@@ -81,14 +81,6 @@ if c.is_mod_enabled("default") then
 			{ "group:glass", "group:glass", "group:glass" },
 			{ "default:steel_ingot", "circuit_board", "default:steel_ingot" },
 			{ "", "copper_wire_spool", "" },
-		},
-	})
-elseif c.is_mod_enabled("blk") then
-	core.register_craft({
-		output = "solar_panel",
-		recipe = {
-			{ "group:glass", "group:glass", "group:glass" },
-			{ "iron_bar", "circuit_board", "iron_bar" },
 		},
 	})
 end

@@ -1,4 +1,4 @@
-local S, PS = core.get_translator("circuits")
+local S = core.get_translator("circuits")
 local c = circuits
 local range = tonumber(core.settings:get("circuits_detector_range")) or 5
 local refresh_rate = tonumber(core.settings:get("circuits_detector_refresh_rate")) or 0.3
@@ -27,10 +27,7 @@ local detector = {
 		local npos = c.npos(pos)
 		local entity = core.get_objects_inside_radius(npos, range + 1)
 		if #entity >= 1 then
-			for k, obj in pairs(entity) do
-				c.power_update(npos, "on")
-				break
-			end
+			c.power_update(npos, "on")
 		else
 			if c.is_on(npos) then
 				c.power_update(npos, "off")
@@ -79,15 +76,6 @@ if c.is_mod_enabled("default") then
 			{ "default:steel_ingot", "dye:red", "default:steel_ingot" },
 			{ "default:gold_ingot", "light_bulb", "copper_wire_spool" },
 			{ "default:steel_ingot", "circuit_board", "default:steel_ingot" },
-		},
-	})
-elseif c.is_mod_enabled("blk") then
-	core.register_craft({
-		output = c.mod() .. ":entity_detector_off",
-		recipe = {
-			{ "iron_bar", "blk_dyes:red_dye", "iron_bar" },
-			{ "gold_bar", "copper_bar", "gold_bar" },
-			{ "iron_bar", "circuit_board", "iron_bar" },
 		},
 	})
 end

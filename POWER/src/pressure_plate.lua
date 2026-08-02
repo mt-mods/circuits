@@ -1,4 +1,4 @@
-local S, PS = core.get_translator("circuits")
+local S = core.get_translator("circuits")
 local c = circuits
 local refresh_rate = tonumber(core.settings:get("circuits_pressure_plate_refresh_rate")) or 0.2
 
@@ -84,10 +84,5 @@ if c.is_mod_enabled("default") then
 	core.register_craft({
 		output = "pressure_plate",
 		recipe = { { "group:wood", "group:wood", "group:wood" } },
-	})
-elseif c.is_mod_enabled("blk") then
-	core.register_craft({
-		output = "pressure_plate",
-		recipe = { { "group:wood_planks", "group:wood_planks", "group:wood_planks" } },
 	})
 end

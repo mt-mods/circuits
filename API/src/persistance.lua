@@ -29,12 +29,12 @@ if not c.pending then
 end
 
 local function save_pending()
-	local file = assert(io.open(database_path, "w"))
+	local file2 = assert(io.open(database_path, "w"))
 	local pending_string = core.serialize(c.pending)
 	if pending_string then
-		file:write(pending_string)
+		file2:write(pending_string)
 	end
-	file:close()
+	file2:close()
 end
 
 core.register_on_shutdown(save_pending)

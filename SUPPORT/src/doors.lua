@@ -2,8 +2,7 @@
 -- gets all registered doors
 local registered_doors = {}
 for name, def in pairs(core.registered_nodes) do
-	if not def.groups.door then
-	elseif def.groups.door > 0 and not circuits.is_mod_enabled("blk_doors") then
+	if def.groups.door > 0 then
 		table.insert(registered_doors, name)
 	end
 end

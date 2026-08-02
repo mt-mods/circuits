@@ -2,16 +2,19 @@ unused_args = false
 
 globals = {
   "circuits",
+
+  -- Luanti
+  "core", "minetest",
 }
 
 read_globals = {
   -- Luanti
-  "core", "minetest",
+  "vector",
 
   -- Lua
 	table = {fields = {"copy", "getn"}},
 
   -- Mods
   "doors", "default",
-  "mesecons",
+  "mesecon",
 }
