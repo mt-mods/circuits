@@ -18,7 +18,7 @@ end
 local lever = {
 	description = S("Lever"),
 	drawtype = "mesh",
-	mesh = "circuits_lever_down.gltf",
+	mesh = "circuits_lever_down .glb",
 	selection_box = {
 		type = "fixed",
 		fixed = { -0.2500, -0.2500, 0.3125, 0.2500, 0.2500, 0.5000 },
@@ -85,7 +85,7 @@ local lever = {
 
 -- register the nodes
 circuits.register_on_off(c.mod() .. ":lever", lever, {
-	mesh = "circuits_lever_up.gltf",
+	mesh = "circuits_lever_up .glb",
 	groups = {
 		oddly_breakable_by_hand = 1,
 		choppy = 1,
