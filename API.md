@@ -1,39 +1,45 @@
-These are functions contained within the namespace `circuits` to be used both
-internally and externally. This documentation of them is a work in progress.
-Many of these descriptions may be incomplete, missing, or incorrect. Take everything here 
-with a grain of salt.  
+# API Reference
 
-# Supporting Circuits in your own mods
+These are functions contained within the namespace `circuits`.
+This documentation of them is a work in progress.
+Some descriptions may be incomplete, missing, or incorrect.
+
 > [!NOTE]
 > There is a table called npos referenced in many of the functions, it is a pos
 > with a node table contained within it. It's used for transferring the node's state
-> before/as it's been placed in the world, it's left over from an old version of the 
+> before/as it's been placed in the world, it's left over from an old version of the
 > mod and to remove it would require a rewrite of the entire mod. Most of the simple
 > api's will work with the regular pos table though.
 
 ## Groups
-There are three main groups used by the mod. `circuit_power` is the group that 
-all power providing nodes should use. `circuit_wire` is the group that all conductive 
-nodes should use. And `circuit_consumer` is the group that all power using nodes 
+
+There are three main groups used by the mod. `circuit_power` is the group that
+all power providing nodes should use. `circuit_wire` is the group that all conductive
+nodes should use. And `circuit_consumer` is the group that all power using nodes
 should use.
 
 ## Definition Table
-This mod requires that any node that will/should connect to a network have a 
+
+This mod requires that any node that will/should connect to a network have a
 circuits definition table.
 
 ## on_construct and on_destruct
+
 You will need to add `circuits.on_construct(pos)` to your node's on_construct function.
-And  `circuits.on_destruct(pos)` to your node's on_destruct function. If you don't then 
+And `circuits.on_destruct(pos)` to your node's on_destruct function. If you don't then
 they will not be able to connect (or disconnect) from any other node.
 
 ## Modding Functions
-So that you don't have to hunt through the rest of this document for the documentation 
+
+So that you don't have to hunt through the rest of this document for the documentation
 on the above mentioned api's, we've added their documentation here for you.
 
 ## Circuits Definition
-This is required in any node that will interact with nodes in this mod. 
-Note that there are no defaults for these options, they were filled instead with the most common values. 
-Fields are required unless otherwise stated.   
+
+This is required in any node that will interact with nodes in this mod.
+Note that there are no defaults for these options, they were filled instead with the most common values.
+Fields are required unless otherwise stated.
+
 ```lua
 circuits = {
   connects = circuits.local_area
@@ -53,6 +59,7 @@ circuits = {
 ```
 
 ### on_construct
+
 ```lua
 --- Attempts to connect all nodes next to that pos
 -- @param pos table The pos at which to attempt to connect nodes.
@@ -60,6 +67,7 @@ circuits.on_construct(pos)
 ```
 
 ### on_destruct
+
 ```lua
 --- Disconnects all nodes attached to that pos
 -- @param pos table
@@ -67,6 +75,7 @@ circuits.on_destruct(pos)
 ```
 
 ### add_circuit_def
+
 > [!WARNING]
 > This is an experimental function and should only be used for testing,
 > at last check it did not work.
@@ -84,9 +93,11 @@ function circuits.add_circuit_def(connect, connects, storage, on_update)
 ```
 
 # Util Functions
+
 These functions are contained within the `util.lua` file.
 
 ## register_on_off
+
 ```lua
 --- Used to register both the on and the off nodes.
 -- @param name string The name of the two nodes without `_on` or `_off`.
@@ -97,15 +108,17 @@ circuits.register_on_off(name, def, on_def, off_def)
 ```
 
 ## get_circuit_def
+
 ```lua
 --- Used to get the circuit definition from the node definition table.
 -- @param node_name string The full name of the node.
--- @return circuits table If included in that nodes definition table.  
+-- @return circuits table If included in that nodes definition table.
 -- @return boolean False if the node name is not valid or that node has no circuits table.
 circuits.get_circuit_def(node_name)
 ```
 
 ## get_powered
+
 ```lua
 --- Get the powered version name of the node located at the pos given.
 -- @param npos table The npos of the node.
@@ -115,6 +128,7 @@ circuits.get_powered(npos)
 ```
 
 ## get_off
+
 ```lua
 --- Get the off version name of the node located at the pos given.
 -- @param npos table The npos of the node.
@@ -124,6 +138,7 @@ circuits.get_off(npos)
 ```
 
 ## is_on
+
 ```lua
 --- Check if the node is on or off at the given pos
 -- @param npos table The npos of the node.
@@ -133,6 +148,7 @@ circuits.is_on(npos)
 ```
 
 ## npos
+
 ```lua
 --- Mutate a pos into a npos.
 -- @param pos table The position the node is at.
@@ -142,6 +158,7 @@ circuits.npos(pos[, node])
 ```
 
 ## on_construct
+
 ```lua
 --- Attempts to connect all nodes next to that pos
 -- @param pos table The pos at which to attempt to connect nodes.
@@ -149,6 +166,7 @@ circuits.on_construct(pos)
 ```
 
 ## on_destruct
+
 ```lua
 --- Disconnects all nodes attached to that pos
 -- @param pos table
@@ -156,6 +174,7 @@ circuits.on_destruct(pos)
 ```
 
 ## register_node
+
 ```lua
 --- Registers nodes, used internally
 -- @param name string The name of the node
@@ -164,6 +183,7 @@ circuits.register_node(name, def)
 ```
 
 ## is_mod_enabled
+
 ```lua
 --- Checks if a mod is enabled for a the current world
 -- @param mod string The mod name to check
@@ -172,14 +192,16 @@ circuits.is_mod_enabled(mod)
 ```
 
 ## mod
+
 ```lua
 --- Returns the current loading mod name.
 -- @return string The mod's name.
 circuits.mod()
 ```
 
-##  is_same_pos
-```lua
+## is_same_pos
+
+````lua
 --- Checks if pos1 is the same as pos2.
 -- @param pos1 table position 1
 -- @param pos2 table position 2
@@ -197,9 +219,10 @@ These functions are contained within the `connection.lua` file.
 -- @return false If connection fails.
 -- @return true If connection is made.
 circuits.connect(a, b)
-```
+````
 
 ## disconnect
+
 ```lua
 --- Disconnect node b from node a
 -- @param a table npos of node a
@@ -210,6 +233,7 @@ circuits.disconnect(a, b)
 ```
 
 ## connect_all
+
 ```lua
 --- Connects a node to all nearby nodes.
 -- @param node table npos of node to connect.
@@ -218,6 +242,7 @@ circuits.connect_all(node)
 ```
 
 ## disconnect_all
+
 ```lua
 --- Disconnects all connects for a node.
 -- @param node table npos of node.
@@ -227,6 +252,7 @@ circuits.disconnect_all
 ```
 
 ## get_connected_in_dir
+
 ```lua
 --- Tells you if it's connected in that direction?
 -- @param npos table npos of node.
@@ -236,6 +262,7 @@ circuits.get_connected_in_dir(npos, dir, flags)
 ```
 
 ## is_connected
+
 ```lua
 --- Tells you if a node is connected.
 -- @param npos table npos of a node.
@@ -246,6 +273,7 @@ circuits.is_connected(npos, to)
 ```
 
 ## get_all_connected
+
 ```lua
 --- Gets all connnections for a node.
 -- @param node table npos of the node.
@@ -255,9 +283,11 @@ circuits.get_all_connected(node)
 ```
 
 # Position Functions
+
 These functions are contained within the `position.lua` file.
 
 ## dir_to_mount
+
 ```lua
 --- Gives you the mapping matrix for each direction.
 -- @param dir table dir in the form {y=-2}.
@@ -266,6 +296,7 @@ circuits.dir_to_mount(dir)
 ```
 
 ## pos_wallmount_relative
+
 ```lua
 --- Converts wallmounted pos to a relative pos.
 -- @param wallmount param of wallmounted node.
@@ -275,6 +306,7 @@ circuits.pos_wallmout_relative(wallmount, npos, pos)
 ```
 
 ## wallmount_real_pos
+
 ```lua
 --- Converts wallmounted relative pos into real pos.
 -- @param wallmount param of wallmounted node.
@@ -284,6 +316,7 @@ circuits.wallmount_real_pos(wallmounted, npos, rpos)
 ```
 
 ## facedir_to_dir
+
 ```lua
 --- Gives you the vertical axis and axis transformations of a facedif node.
 -- @param facedir
@@ -292,6 +325,7 @@ circuits.facedir_to_dir(facedir)
 ```
 
 ## pos_facedir_relative
+
 ```lua
 --- Transforms pos to pos relative to a facedir node.
 -- @param facedir param of facedir node.
@@ -301,6 +335,7 @@ circuits.pos_facedir_relative(facedir, npos, pos)
 ```
 
 ## facedir_real_pos
+
 ```lua
 --- Transform real pos into pos relative to facedir node.
 -- @param facedir param of facedir node.
@@ -310,6 +345,7 @@ circuits.facedir_real_pos(facedir, npos, rpos)
 ```
 
 ## relative_pos
+
 ```lua
 -- @param node
 -- @param pos
@@ -317,6 +353,7 @@ circuits.relative_pos(node, pos)
 ```
 
 ## relative_real_pos
+
 ```lua
 -- @param node
 -- @param rpos
@@ -324,18 +361,21 @@ circuits.relative_real_pos(node, rpos)
 ```
 
 ## invert_relative
+
 ```lua
 -- @param dir
 circuits.invert_relative(dir)
 ```
 
 ## rpos_is_dir
+
 ```lua
 -- @param rpos
 circuits.rpos_is_dir(rpos)
 ```
 
 ## rot_relative_pos
+
 ```lua
 --- Takes two npos and gives you rpos of node a relative to any rotation a might have.
 -- @param a table npos of node a.
@@ -344,6 +384,7 @@ circuits.rot_relative_pos(a, b)
 ```
 
 ## rot_relative_real_pos
+
 ```lua
 --- Takes a npos and an rpos, returns the real pos, relative to any rotation a might have.
 -- @param a table npos a
@@ -352,9 +393,11 @@ circuits.rot_relative_real_pos(a, rpos)
 ```
 
 # Power Functions
+
 These functions are contained within the `power.lua` file.
 
 ## is_powering
+
 ```lua
 --- Checks if the npos node is powering.
 -- @param npos table The npos of the powering node.
@@ -365,6 +408,7 @@ circuits.is_powering(npos, node)
 ```
 
 ## wait
+
 ```lua
 --- Inserts a delayed update.
 -- @param npos table The npos to be updated.
@@ -374,6 +418,7 @@ circuits.wait(npos, args, no_ticks)
 ```
 
 ## update
+
 ```lua
 --- Creates an update with no delay.
 -- @param npos table The npos to be updated.
@@ -382,6 +427,7 @@ circuits.update(npos, args)
 ```
 
 ## power_update
+
 ```lua
 --- Creates a power update with no delay.
 -- @param npos table The npos to be updated.
@@ -390,9 +436,11 @@ circuits.power_update(npos, args)
 ```
 
 # Wire Functions
+
 This function is contained within the `wire.lua` file.
 
 ## wire.update
+
 ```lua
 --- Updates the wire.
 -- @param npos table The npos of the node to be updated.
