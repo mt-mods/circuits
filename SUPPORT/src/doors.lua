@@ -2,10 +2,13 @@
 -- gets all registered doors
 local registered_doors = {}
 for name, def in pairs(core.registered_nodes) do
-	if def.groups.door > 0 then
-		table.insert(registered_doors, name)
+	if def.groups.door then
+		if def.groups.door > 0 then
+			table.insert(registered_doors, name)
+		end
 	end
 end
+
 -- creates the circuits_def for the doors
 local circuits_def = {
 	connects = circuits.behind,
