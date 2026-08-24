@@ -1,0 +1,16 @@
+{
+  "$schema": "https://content.luanti.org/api/cdb_schema/",
+  "title": "Circuits",
+  "tags": ["building", "building_mechanics", "mtg", "survival", "technology"],
+  "type": "MOD",
+  "dev_state": "MAINTENANCE_ONLY",
+  "ai_disclosure": "NONE",
+  "license": "MIT",
+  "media_license": "CC0-1.0",
+  "repo": "https://codeberg.org/Sheriff_U3/circuits",
+  "issue_tracker": "https://codeberg.org/Sheriff_U3/circuits/issues/new",
+  "translation_url": "https://translate.codeberg.org/engage/circuits/",
+  "website": "https://codeberg.org/Sheriff_U3/circuits/wiki/",
+  "forums": 32335,
+  "short_description": "Circuits, an alternative to mesecons"
+}
