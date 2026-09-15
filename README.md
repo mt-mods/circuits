@@ -2,7 +2,7 @@
 
 [![ContentDB](https://content.luanti.org/packages/Sheriff-Unit-3/circuits/shields/downloads/)](https://content.luanti.org/packages/Sheriff-Unit-3/circuits/)
 [![Luanti Forums](https://img.shields.io/badge/Luanti%20Forums-32335-blue.svg)](https://forum.luanti.org/viewtopic.php?t=32335)
-[![Luacheck](https://codeberg.org/Sheriff_U3/circuits/badges/workflows/luacheck.yml/badge.svg)](https://codeberg.org/Sheriff_U3/circuits/actions?workflow=luacheck.yml)
+[![Luacheck](https://github.com/mt-mods/circuits/actions/workflows/luacheck.yml/badge.svg)](https://github.com/mt-mods/circuits/actions/workflows/luacheck.yml)
 [![Translation status](https://translate.luanti.ch/widget/mt-mods/circuits/svg-badge.svg?capitalize=1)](https://translate.luanti.ch/engage/mt-mods/)
 
 Adds circuitry-related nodes to Luanti. See below for a list of features.
