@@ -5,16 +5,15 @@
 [![Luacheck](https://codeberg.org/Sheriff_U3/circuits/badges/workflows/luacheck.yml/badge.svg)](https://codeberg.org/Sheriff_U3/circuits/actions?workflow=luacheck.yml)
 [![Translation status](https://translate.luanti.ch/widget/mt-mods/circuits/svg-badge.svg?capitalize=1)](https://translate.luanti.ch/engage/mt-mods/)
 
-A modpack for the voxel game engine luanti, originally made by qwertymine3, [GitHub](https://github.com/Qwertymine), [forums](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=16371).
-Currently manantained/developed by Sheriff_U3, [GitHub](https://github.com/Sheriff-Unit-3), [forums](https://forum.luanti.org/memberlist.php?mode=viewprofile&u=53881), [ContentDB](https://content.luanti.org/users/Sheriff-Unit-3/).
+Adds circuitry-related nodes to Luanti. See below for a list of features.
 
 ## Features
 
 Power sources:
 
 - Pressure Plate, step on it to turn on the network.
-- Button, rightclick to turn on the network for a second.
-- Lever, rightclick to turn on the network.
+- Button, right-click to turn on the network for a second.
+- Lever, right-click to turn on the network.
 - Entity Detector, detects any entity within 5 nodes.
 - Player Detector, detects any player within 5 nodes.
 
@@ -37,19 +36,18 @@ Items:
 
 ## Mods Supported
 
-Mods currently supported:
-
 - Doors from MTG
 
 ## Games Supported
 
-Games currently supported:
+- Minetest Game
 
-- MTG
-  Other games will work, but may not have support for all the features of this mod.
-  Support for the Mineclone games is not planned, Mineclone just isn't built for this sort of mod.
+Other games will work, but may not have support for all the features of this mod.
+Support for the Mineclone games is not planned.
 
 ## Licensing
 
 - Code: [MIT](/LICENSE.md#code)
 - Media: [CC0](/LICENSE.md#media)
+
+See [LICENSE.md](/LICENSE.md) for more details.
