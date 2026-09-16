@@ -7,118 +7,120 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-17 12:05-0500\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-09-16 20:57+0000\n"
+"Last-Translator: Jouni Järvinen <rautajunk@gmail.com>\n"
+"Language-Team: Finnish <https://translate.luanti.ch/projects/mt-mods/"
+"circuits/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.8.1\n"
 
 #: modpack.conf:2
 msgid "Circuits"
-msgstr ""
+msgstr "Virtapiirit"
 
 #: modpack.conf:3
 msgid "Circuits, a basic redstone-like mod."
-msgstr ""
+msgstr "Virtapiirit – Redstonea muistuttava perusmodi."
 
 #: API/mod.conf:2
 msgid "Adds API for circuits"
-msgstr ""
+msgstr "Lisää API:n sähköpiireille"
 
 #: CONSUMERS/mod.conf:2
 msgid "Adds circuits consumer nodes."
-msgstr ""
+msgstr "Lisää sähköpiirien kulutuskuutioita."
 
 #: POWER/mod.conf:2
 msgid "Adds circuits power nodes."
-msgstr ""
+msgstr "Lisää sähköpiirien virtakuutioita."
 
 #: SUPPORT/mod.conf:2
 msgid "Adds circuits support for other mods."
-msgstr ""
+msgstr "Lisää sähköpiirituen muille lisäosille."
 
 #: WIRES/mod.conf:2
 msgid "Adds circuits wire nodes."
-msgstr ""
+msgstr "Lisää sähköpiirien johdinkuutioita."
 
 #: API/wrench.lua:26
 msgid "Wrench"
-msgstr ""
+msgstr "Jakoavain"
 
 #: WIRES/wire_node.lua:5
 msgid "Wire"
-msgstr ""
+msgstr "Johdin"
 
 #: WIRES/wire_node.lua:84
 msgid "Red"
-msgstr ""
+msgstr "Punainen"
 
 #: WIRES/wire_node.lua:84
 msgid "Green"
-msgstr ""
+msgstr "Vihreä"
 
 #: WIRES/wire_node.lua:84
 msgid "Blue"
-msgstr ""
+msgstr "Sininen"
 
 #: WIRES/wire_node.lua:87
 msgid "@1 Wire"
-msgstr ""
+msgstr "@1 johdin"
 
 #: POWER/lever.lua:19
 msgid "Lever"
-msgstr ""
+msgstr "Vipu"
 
 #: POWER/player_detector.lua:17
 msgid "Player Detector"
-msgstr ""
+msgstr "Pelaajatunnistin"
 
 #: POWER/inverter.lua:15
 msgid "Inverter"
-msgstr ""
+msgstr "Invertteri"
 
 #: POWER/entity_detector.lua:17
 msgid "Entity Detector"
-msgstr ""
+msgstr "Oliotunnistin"
 
 #: POWER/laser_detector.lua:44
 msgid "Laser Detector"
-msgstr ""
+msgstr "Lasertunnistin"
 
 #: POWER/pressure_plate.lua:16
 msgid "Pressure Plate"
-msgstr ""
+msgstr "Painelevy"
 
 #: POWER/button.lua:17
 msgid "Button"
-msgstr ""
+msgstr "Painike"
 
 #: POWER/solar_panel.lua:16
 msgid "Solar Panel"
-msgstr ""
+msgstr "Aurinkopaneeli"
 
 #: SUPPORT/mesecons.lua:8
 msgid "Converter"
-msgstr ""
+msgstr "Muunnin"
 
 #: SUPPORT/craftitems.lua:6
 msgid "Circuit Board"
-msgstr ""
+msgstr "Piirilevy"
 
 #: SUPPORT/craftitems.lua:13
 msgid "Lightbulb"
-msgstr ""
+msgstr "Hehkulamppu"
 
 #: SUPPORT/craftitems.lua:20
 msgid "Spool"
-msgstr ""
+msgstr "Kela"
 
 #: SUPPORT/craftitems.lua:27
 msgid "Copper Wire Spool"
-msgstr ""
+msgstr "Kuparilankakela"
 
 #: CONSUMERS/vanish.lua:5
 msgid "Vanishing Node"
@@ -126,7 +128,7 @@ msgstr ""
 
 #: CONSUMERS/light.lua:5
 msgid "Light"
-msgstr ""
+msgstr "Valo"
 
 #: CONSUMERS/disappear.lua:5
 msgid "Disappearing Node"
@@ -134,4 +136,4 @@ msgstr ""
 
 #: CONSUMERS/indicator.lua:5
 msgid "Indicator"
-msgstr ""
+msgstr "Merkkivalo"
