@@ -1,0 +1,3 @@
+[linter]
+# Non Luanti standard/auto-detected mod globals
+globals = ["mesecon"]

@@ -6,13 +6,17 @@ jobs:
   flint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
-      - uses: luanti-org/flint@master
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: Lint
+        uses: luanti-org/flint@master
         with:
           command: lint
-      - uses: luanti-org/flint@master
+      - name: Format
+        uses: luanti-org/flint@master
         with:
           command: format
-      - uses: luanti-org/flint@master
+      - name: Compress media
+        uses: luanti-org/flint@master
         with:
           command: compress
